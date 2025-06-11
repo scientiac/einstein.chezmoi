@@ -1,10 +1,5 @@
 # ~/.zshrc - A Modern Zsh Configuration
 
-# Install Dependencies
-# paru -S zsh-completions zsh-history-substring-search zsh-you-should-use zsh-autosuggestions
-# paru -S fzf fd bat ripgrep tree dust git-delta lazygit
-# paru -S zsh-fast-syntax-highlighting thefuck direnv
-
 # ============================================================================
 # ZSH OPTIONS
 # ============================================================================
