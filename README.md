@@ -1,6 +1,17 @@
 # einstein.chezmoi
 
-My dotfiles for Arch Linux managed by chezmoi.
+My dotfiles for Arch Linux managed by `chezmoi`.
+
+I am currently on gnome with the following extensions:
+```
+
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-caffeine
+gnome-shell-extension-clipboard-indicator
+gnome-shell-extension-just-perfection-desktop
+gnome-shell-extension-unite
+
+```
 
 ## Packages
 `paru` as AUR helper.
@@ -16,7 +27,6 @@ zsh ghostty neovim neovide git chezmoi
 ### Neovim
 ```
 
-# for vimtex
 texlive-full sioyek
 
 ```
@@ -27,5 +37,12 @@ texlive-full sioyek
 starship zoxide fzf fd bat ripgrep tree dust git-delta lazygit
 zsh-completions zsh-history-substring-search zsh-you-should-use zsh-autosuggestions
 zsh-fast-syntax-highlighting thefuck direnv
+
+```
+
+### Applications
+```
+
+refine newsflash foliate valent signal-desktop
 
 ```
