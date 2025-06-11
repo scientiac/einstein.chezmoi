@@ -27,7 +27,7 @@ zsh ghostty neovim neovide git chezmoi
 ### Neovim
 ```
 
-texlive-full sioyek
+texlive-full sioyek imagemagick
 
 ```
 
