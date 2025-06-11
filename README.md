@@ -46,3 +46,11 @@ zsh-fast-syntax-highlighting thefuck direnv
 refine newsflash foliate valent signal-desktop
 
 ```
+
+
+### bash
+```
+
+gum bc
+
+```
