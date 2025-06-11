@@ -16,7 +16,7 @@ return {
         vim.g.vimtex_compiler_progname = "nvr"
     end,
     config = function()
-        -- Create autocommands after plugin loads
+        -- Automatically create autocommands after plugin loads
         local augroup = vim.api.nvim_create_augroup("VimTexConfig", { clear = true })
         
         -- Set filetype 
