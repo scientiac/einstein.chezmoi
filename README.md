@@ -40,7 +40,7 @@ zsh-fast-syntax-highlighting thefuck direnv fastfetch
 
 ```
 
-### Applications
+### applications
 ```
 
 refine newsflash foliate valent signal-desktop
