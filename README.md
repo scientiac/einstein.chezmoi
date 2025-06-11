@@ -36,7 +36,7 @@ texlive-full sioyek imagemagick
 
 starship zoxide fzf fd bat ripgrep tree dust git-delta lazygit
 zsh-completions zsh-history-substring-search zsh-you-should-use zsh-autosuggestions
-zsh-fast-syntax-highlighting thefuck direnv
+zsh-fast-syntax-highlighting thefuck direnv fastfetch
 
 ```
 
