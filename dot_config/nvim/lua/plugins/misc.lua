@@ -35,7 +35,7 @@ return {
     },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "lua", "vimdoc", "rust", "go", "json", "toml", "markdown" },
+        ensure_installed = { "lua", "vimdoc", "rust", "go", "json", "toml", "markdown", "typst" },
         highlight = {
           enable = true,
           use_languagetree = true,
