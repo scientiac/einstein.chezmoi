@@ -85,4 +85,12 @@ vim.lsp.config.nil_ls = {
   root_markers = { 'flake.nix', '.git' },
 }
 
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls' })
+vim.lsp.config["tinymist"] = {
+    cmd = { "tinymist" },
+    filetypes = { "typst" },
+    settings = {
+        formatterMode = "typstyle"
+    }
+}
+
+vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist' })
