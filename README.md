@@ -61,3 +61,4 @@ gum bc
 qutebrowser pdfjs python-adblock qt6-wayland
 
 ```
+
