@@ -182,7 +182,8 @@ alias lt='eza --tree --icons --group-directories-first'
 alias la='eza -la --icons --group-directories-first --all'
 
 # Editors
-alias nvim='neovide'
+alias nv='neovide'
+alias nvim='command nvim'
 alias vim='command nvim'
 alias vi='command nvim'
 
