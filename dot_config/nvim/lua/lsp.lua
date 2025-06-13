@@ -76,7 +76,7 @@ vim.lsp.config.lua_ls = {
 vim.lsp.config.nixd = {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
-  root_markers = { 'flake.nix', 'git' },
+  root_markers = { 'flake.nix', '.git' },
 }
 
 vim.lsp.config.nil_ls = {
@@ -93,4 +93,9 @@ vim.lsp.config["tinymist"] = {
     }
 }
 
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist' })
+vim.lsp.config["ltex-ls-plus"] = {
+    cmd = { "ltex-ls-plus" },
+    filetypes = { "typst", "tex", "markdown" },
+}
+
+vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'ltex-ls-plus' })
