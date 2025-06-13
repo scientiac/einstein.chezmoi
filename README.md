@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh ghostty neovim neovide git chezmoi
+zsh ghostty neovim neovide git chezmoi ttf-fantasque-nerd
 
 ```
 
@@ -52,5 +52,12 @@ refine newsflash foliate valent signal-desktop
 ```
 
 gum bc
+
+```
+
+### qutebrowser
+```
+
+qutebrowser pdfjs python-adblock
 
 ```
