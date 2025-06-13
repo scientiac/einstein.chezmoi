@@ -27,7 +27,7 @@ zsh ghostty neovim neovide git chezmoi ttf-fantasque-nerd
 ### Neovim
 ```
 
-texlive-full sioyek imagemagick tinymist typst
+texlive-full sioyek imagemagick tinymist typst qt5-wayland
 
 ```
 
@@ -58,6 +58,6 @@ gum bc
 ### qutebrowser
 ```
 
-qutebrowser pdfjs python-adblock
+qutebrowser pdfjs python-adblock qt6-wayland
 
 ```
