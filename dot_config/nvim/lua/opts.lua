@@ -76,13 +76,8 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 vim.diagnostic.config {
-  virtual_text = {
-    prefix = "",
-    suffix = "",
-    format = function(diagnostic)
-      return " " .. diagnostic.message .. " "
-    end,
-  },
+  virtual_lines = { current_line = true },
+  virtual_text = false,
   underline = {
     severity = { min = vim.diagnostic.severity.WARN },
   },
