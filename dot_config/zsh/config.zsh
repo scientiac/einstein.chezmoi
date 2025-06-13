@@ -284,3 +284,26 @@ export TERM='xterm-256color'
 
 # Path additions
 export PATH="$HOME/.local/bin:$PATH"
+
+# Wayland
+# Wayland for Qt apps
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# Wayland for Electron apps (e.g., VSCode)
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+# Wayland for SDL apps (e.g., games)
+export SDL_VIDEODRIVER=wayland
+
+# GTK
+export GDK_BACKEND=wayland
+
+# For Browsers
+export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
+export CLUTTER_BACKEND=wayland
+
+# Chromium/Electron
+export OZONE_PLATFORM=wayland
+export GTK_USE_PORTAL=1
