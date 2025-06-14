@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh ghostty neovim neovide git chezmoi ttf-fantasque-nerd
+zsh ghostty keyguard steam neovim neovide git chezmoi ttf-fantasque-nerd
 
 ```
 
