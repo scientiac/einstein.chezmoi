@@ -174,11 +174,4 @@ window-rule {
     match app-id="^signal$"
     block-out-from "screencast"
 }
-window-rule {
-    match title="Keyguard"
-    min-width 1000
-    max-width 1000
-    min-height 800
-    max-height 800
-}
 animations { slowdown 1.000000; }
