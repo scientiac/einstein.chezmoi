@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+DCONF_COLOR_SCHEME="/org/gnome/desktop/interface/color-scheme"
+CURRENT_SCHEME=$(dconf read $DCONF_COLOR_SCHEME)
+
+if [ "$CURRENT_SCHEME" = "'prefer-dark'" ]; then
+  theme_option="LightMode"
+else
+  theme_option="DarkMode"
+fi
+
+options="Lock\nLogout\nReboot\nPoweroff\nSuspend\n$theme_option"
+
+choice=$(echo -e "$options" | wofi --dmenu \
+  --insensitive \
+  --width=50 \
+  --lines=7)
+
+case $choice in
+"Lock")
+  blurlock
+  ;;
+"Logout")
+  loginctl terminate-user $USER
+  ;;
+"Reboot")
+  systemctl reboot
+  ;;
+"Poweroff")
+  systemctl poweroff
+  ;;
+"Suspend")
+  systemctl suspend
+  ;;
+"DarkMode"|"LightMode")
+  themetoggle
+  ;;
+*)
+  echo "No valid option selected."
+  ;;
+esac
