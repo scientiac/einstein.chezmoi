@@ -113,7 +113,7 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Shift+Right { move-column-right; }
-    Mod+Shift+S { screenshot; }
+    Mod+Shift+S { screenshot-screen; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Shift+Tab { focus-window-up-or-column-left; }
     Mod+Shift+Up { move-window-up-or-to-workspace-up; }
