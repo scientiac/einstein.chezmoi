@@ -84,3 +84,11 @@ systemctl --user daemon-reload
 systemctl --user add-wants niri.service swayidle.service
 
 ```
+
+### Local Bin Path
+```zsh
+
+mkdir -p ~/.config/environment.d
+echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.conf
+
+```
