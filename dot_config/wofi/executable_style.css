@@ -1,0 +1,43 @@
+*{
+  all: unset;
+  font-family: FantasqueSansM Nerd Font;
+  font-size: 11pt;
+  font-weight: normal;
+  border-radius: 8px;
+}
+
+#window {
+  background: #000000;
+  border-radius: 8px;
+  border: 1px solid #3a3b3c;
+}
+
+#input {
+  margin-bottom: 4px;
+  padding: 4px;
+}
+
+#input > image.left {
+  margin-right: 4px;
+}
+
+#input > image.right  {
+  margin-left: 4px;
+}
+
+#outer-box {
+  padding: 4px;
+}
+
+#img {
+  padding-right: 8px;
+}
+
+#entry {
+  border-radius: 4px;
+  padding: 4px;
+}
+
+#entry:selected {
+  background: #3a3b3c;
+}
