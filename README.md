@@ -68,3 +68,10 @@ qutebrowser pdfjs python-adblock qt6-wayland
 ttf-devanagarifonts lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-win11-auto ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji
 
 ```
+
+## Niri
+```
+
+niri clipse swayosd mako brightnessctl alacritty wofi swww-git way-edges
+
+```
