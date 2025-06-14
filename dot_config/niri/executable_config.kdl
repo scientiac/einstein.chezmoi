@@ -1,0 +1,179 @@
+input {
+    keyboard {
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 0.000000
+        click-method "clickfinger"
+    }
+    mouse { accel-speed 1.000000; }
+    trackpoint { accel-speed 0.000000; }
+    trackball { accel-speed 0.000000; }
+    tablet
+    touch
+}
+output "eDP-1" {
+    scale 2.000000
+    transform "normal"
+    mode "2880x1800@60.001000"
+}
+screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd
+overview { backdrop-color "#000000"; }
+layout {
+    background-color "transparent"
+    gaps 4
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    focus-ring {
+        width 0
+        active-color "#3a3b3c00"
+        inactive-color "rgb(80 80 80)"
+    }
+    border { off; }
+    insert-hint { color "rgb(127 200 255 / 50%)"; }
+    default-column-width
+    center-focused-column "never"
+    always-center-single-column
+}
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
+hotkey-overlay { skip-at-startup; }
+environment { DISPLAY ":0"; }
+binds {
+    Alt+Period { spawn "bemoji"; }
+    Alt+Shift+E { spawn "sh" "-c" "if pidof wofi > /dev/null; then kill $(pidof wofi); else wofi-logout; fi"; }
+    Alt+Shift+L { spawn "blurlock"; }
+    Alt+Space { spawn "sh" "-c" "if pidof wofi > /dev/null; then kill $(pidof wofi); else wofi --show drun; fi"; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Backspace { close-window; }
+    Mod+C { center-column; }
+    Mod+Comma { consume-window-into-column; }
+    Mod+Ctrl+Escape { toggle-window-floating; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Down { focus-window-or-workspace-down; }
+    Mod+E { spawn "neovide"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Escape { switch-focus-between-floating-and-tiling; }
+    Mod+F { maximize-column; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+    Mod+Left { focus-column-left; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Period { expel-window-from-column; }
+    Mod+Print { screenshot-window; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Return { spawn "ghostty"; }
+    Mod+Right { focus-column-right; }
+    Mod+Shift+1 { spawn "sh" "-c" "niri msg action move-column-to-workspace 1"; }
+    Mod+Shift+2 { spawn "sh" "-c" "niri msg action move-column-to-workspace 2"; }
+    Mod+Shift+3 { spawn "sh" "-c" "niri msg action move-column-to-workspace 3"; }
+    Mod+Shift+4 { spawn "sh" "-c" "niri msg action move-column-to-workspace 4"; }
+    Mod+Shift+5 { spawn "sh" "-c" "niri msg action move-column-to-workspace 5"; }
+    Mod+Shift+6 { spawn "sh" "-c" "niri msg action move-column-to-workspace 6"; }
+    Mod+Shift+7 { spawn "sh" "-c" "niri msg action move-column-to-workspace 7"; }
+    Mod+Shift+8 { spawn "sh" "-c" "niri msg action move-column-to-workspace 8"; }
+    Mod+Shift+9 { spawn "sh" "-c" "niri msg action move-column-to-workspace 9"; }
+    Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+S { screenshot; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Tab { focus-window-up-or-column-left; }
+    Mod+Shift+Up { move-window-up-or-to-workspace-up; }
+    Mod+Space { spawn "sh" "-c" "togglebar"; }
+    Mod+Tab { focus-window-down-or-column-right; }
+    Mod+Up { focus-window-or-workspace-up; }
+    Mod+V { spawn "sh" "-c" "ghostty --title='clipse' -e 'clipse'"; }
+    Mod+XF86AudioLowerVolume { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+    Mod+XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --brightness +5"; }
+    Print { screenshot; }
+    XF86AudioLowerVolume { spawn "sh" "-c" "swayosd-client --output-volume -5 --max-volume 100"; }
+    XF86AudioMicMute { spawn "sh" "-c" "swayosd-client --input-volume mute-toggle"; }
+    XF86AudioMute { spawn "sh" "-c" "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --output-volume +5 --max-volume 100"; }
+    XF86Calculator { spawn "sh" "-c" "if pidof gnome-calculator > /dev/null; then kill $(pidof gnome-calculator); else gnome-calculator; fi"; }
+    XF86MonBrightnessDown { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+    XF86MonBrightnessUp { spawn "sh" "-c" "swayosd-client --brightness +5"; }
+}
+switch-events { lid-close { spawn "blurlock"; }; }
+spawn-at-startup "mako"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "sh" "-c" "way-edges & sleep 2; way-edges add niri"
+spawn-at-startup "clipse" "-listen"
+spawn-at-startup "nm-applet"
+spawn-at-startup "swww-daemon" "-n" "wp-front"
+spawn-at-startup "swww-daemon" "-n" "wp-back"
+layer-rule {
+    match namespace="wp-back"
+
+    place-within-backdrop true
+}
+window-rule {
+    draw-border-with-background true
+    geometry-corner-radius 8.000000 8.000000 8.000000 8.000000
+    clip-to-geometry true
+}
+window-rule {
+    match is-focused=false
+    opacity 0.950000
+}
+window-rule {
+    match app-id="^niri$"
+    opacity 1.000000
+}
+window-rule {
+    match title="^clipse$"
+    open-floating true
+}
+window-rule {
+    match app-id="^emacs$"
+    open-maximized true
+}
+window-rule {
+    match app-id="^firefox$" title="Private Browsing"
+    border { active-color "#FF0000"; }
+}
+window-rule {
+    match app-id="^signal$"
+    block-out-from "screencast"
+}
+window-rule {
+    match title="Keyguard"
+    min-width 1000
+    max-width 1000
+    min-height 800
+    max-height 800
+}
+animations { slowdown 1.000000; }
