@@ -1,0 +1,182 @@
+{
+  "widgets": [
+    {
+      "edge": "bottom",
+      "position": "bottom",
+      "layer": "overlay",
+      "monitor": "eDP-1",
+      "type": "workspace",
+      "thickness": 15,
+      "length": "10%",
+      "focus-color": "#afafaf",
+      "default-color": "#000",
+      "hover-color": "#ffffff",
+      "preset": { "type": "niri", "filter-empty": false }
+    },
+    {
+      "edge": "top",
+      "monitor": "eDP-1",
+      "layer": "overlay",
+      "margins": {
+        "left": "12.5%"
+      },
+      "position": "left",
+      "preview-size": 0,
+      "type": "slider",
+      "thickness": 30,
+      "border-width": 4,
+      "length": "12.5%",
+      "fg-color": "#afafaf",
+      "redraw-only-on-internal-update": true,
+      "preset": {
+        "type": "microphone"
+      }
+    },
+    {
+      "edge": "top",
+      "monitor": "*",
+      "position": "left",
+      "layer": "overlay",
+      "preview-size": 0,
+      "type": "slider",
+      "thickness": 30,
+      "border-width": 4,
+      "length": "12.5%",
+      "fg-color": "#ffffff",
+      "redraw-only-on-internal-update": true,
+      "preset": {
+        "type": "speaker"
+      }
+    },
+    {
+      "edge": "top",
+      "monitor": "eDP-1",
+      "layer": "overlay",
+      "margins": {
+        "left": "25%"
+      },
+      "position": "right",
+      "preview-size": 0,
+      "type": "slider",
+      "thickness": 30,
+      "border-width": 4,
+      "length": "5%",
+      "fg-color": "#000000",
+          "font-size": 30,
+      "redraw-only-on-internal-update": true,
+      "preset": {
+        "interval-update": [
+          16000,
+          "echo $(awk '{print $1/100}' /sys/class/power_supply/BAT0/capacity)"
+        ],
+        "type": "custom"
+      }
+    },
+    {
+      "edge": "top",
+      "monitor": "eDP-1",
+      "layer": "overlay",
+      "margins": {
+        "left": "25%"
+      },
+      "position": "left",
+      "preview-size": 0,
+      "type": "slider",
+      "thickness": 30,
+      "border-width": 4,
+      "length": "12.5%",
+      "fg-color": "#000000",
+      "redraw-only-on-internal-update": true,
+      "preset": {
+        "type": "backlight"
+      }
+    },
+    {
+      "namespace": "time",
+      "edge": "top",
+      "position": "right",
+      "margins": {
+        "right": "5%"
+      },
+      "monitor": "eDP-1",
+      "layer": "overlay",
+      "type": "wrap-box",
+      "outlook": {
+        "type": "window",
+        "border-radius": 20,
+        "border-width": 4,
+        "color": "#000000",
+        "corners": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "margins": {
+          "top": 0,
+          "left": 20,
+          "right": 20,
+          "bottom": 0
+        }
+      },
+      "items": [
+        {
+          "type": "text",
+          "fg-color": "#fff",
+          "font-size": 30,
+          "font-family": "FantasqueSansM Nerd Font",
+          "preset": {
+            "type": "time",
+            "update-interval": 500,
+            "format": "%v %T %A"
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "tray",
+      "edge": "bottom",
+      "position": "right",
+      "monitor": "eDP-1",
+      "layer": "overlay",
+      "type": "wrap-box",
+      "align": "bottom-left",
+      "outlook": {
+        "border-radius": 20,
+        "border-width": 4,
+        "color": "#000000",
+        "corners": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "margins": {
+          "bottom": 0,
+          "left": 20,
+          "right": 20,
+          "top": 0
+        },
+        "type": "window"
+      },
+      "items": [
+        {
+          "font-family": "FantasqueSansM Nerd Font Mono",
+          "type": "tray",
+          "icon-size": 40,
+          "header-menu-stack": "menu-top",
+          "header-menu-align": "left",
+          "menu-draw-config": {
+            "font-pixel-height": 22,
+            "text-color": "#fff",
+            "border-color": "#000"
+          },
+          "header-draw-config": {
+            "text-color": "#fff"
+          },
+          "grid-align": "bottom-left"
+        }
+      ]
+    }
+  ]
+}
