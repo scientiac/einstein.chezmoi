@@ -72,6 +72,15 @@ ttf-devanagarifonts lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-w
 ## Niri
 ```
 
-niri clipse swayosd mako brightnessctl alacritty wofi swww-git way-edges
+niri clipse swayosd mako brightnessctl wofi swww-git way-edges bemoji swaylock-effects swayidle
+
+```
+
+### systemd
+Reload systemd and enable the `swayidle` service:
+```zsh
+
+systemctl --user daemon-reload
+systemctl --user add-wants niri.service swayidle.service
 
 ```
