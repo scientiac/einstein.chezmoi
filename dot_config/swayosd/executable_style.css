@@ -1,0 +1,36 @@
+window#osd {
+  border-radius: 100px;
+  border: 1px solid #3a3b3c;
+  background: #000000;
+}
+
+image,
+label {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: FantasqueSansM Nerd Font;
+}
+
+#container > image {
+  -gtk-icon-transform: scale(0.7);
+  margin: 0px;
+  padding: 0px;
+}
+
+#container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+progress {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: #ffffff;
+}
+
+progressbar {
+  min-height: 8px;
+  padding: 0px;
+}
