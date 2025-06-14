@@ -1,6 +1,7 @@
 {
   "widgets": [
     {
+      "namespace": "desktops",
       "edge": "bottom",
       "position": "bottom",
       "layer": "overlay",
@@ -14,6 +15,7 @@
       "preset": { "type": "niri", "filter-empty": false }
     },
     {
+      "namespace": "microphone",
       "edge": "top",
       "monitor": "eDP-1",
       "layer": "overlay",
@@ -33,6 +35,7 @@
       }
     },
     {
+      "namespace": "speaker",
       "edge": "top",
       "monitor": "*",
       "position": "left",
@@ -49,6 +52,7 @@
       }
     },
     {
+      "namespace": "battery",
       "edge": "top",
       "monitor": "eDP-1",
       "layer": "overlay",
@@ -73,6 +77,7 @@
       }
     },
     {
+      "namespace": "brightness",
       "edge": "top",
       "monitor": "eDP-1",
       "layer": "overlay",
