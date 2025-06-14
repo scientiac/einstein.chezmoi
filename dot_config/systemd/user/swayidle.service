@@ -1,0 +1,14 @@
+[Unit]
+PartOf=graphical-session.target
+After=niri.service
+Requisite=graphical-session.target
+
+[Service]
+Environment="PATH=/usr/local/bin:/usr/bin:/bin:%h/.local/bin"
+ExecStart=/usr/bin/swayidle -w \
+  timeout 60 'pidof swaylock && systemctl suspend' \
+  timeout 150 'pidof swaylock || niri msg action spawn -- %h/.local/bin/blurlock' \
+  timeout 300 'pidof swaylock && systemctl suspend' \
+  before-sleep 'niri msg action power-off-monitors' \
+  after-resume 'niri msg action power-on-monitors'
+Restart=on-failure
