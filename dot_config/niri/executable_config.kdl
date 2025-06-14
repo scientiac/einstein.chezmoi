@@ -25,6 +25,11 @@ output "eDP-1" {
 screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
 prefer-no-csd
 overview { backdrop-color "#000000"; }
+gestures {
+    hot-corners {
+        off
+    }
+}
 layout {
     background-color "transparent"
     gaps 4
