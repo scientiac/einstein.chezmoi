@@ -15,7 +15,7 @@ return {
       callback = function()
         vim.defer_fn(function()
           vim.cmd("TypstPreview")
-        end, 100)
+        end, 10)
       end,
     })
   end,
