@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh ghostty keyguard steam neovim neovide git chezmoi inksape ttf-fantasque-nerd
+zsh ghostty keyguard steam neovim neovide git chezmoi inksape ttf-fantasque-nerd webtorrent-cli
 
 ```
 
