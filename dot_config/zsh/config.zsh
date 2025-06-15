@@ -285,6 +285,7 @@ export TERM='xterm-256color'
 
 # Path additions
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/env:$PATH"
 
 # Wayland
 # Wayland for Qt apps
