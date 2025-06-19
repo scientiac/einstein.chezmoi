@@ -19,7 +19,7 @@ c.content.notifications.enabled = False
 c.content.javascript.clipboard = 'access'
 
 # darkmode
-c.colors.webpage.preferred_color_scheme = "dark"
+# c.colors.webpage.preferred_color_scheme = "dark"
 
 # faster vim like quitting
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
