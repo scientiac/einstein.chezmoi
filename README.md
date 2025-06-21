@@ -27,7 +27,7 @@ zsh ghostty keyguard steam neovim neovide git chezmoi inksape ttf-fantasque-nerd
 ### Neovim
 ```
 
-texlive-full sioyek imagemagick tinymist typst qt5-wayland ltex-ls-plus-bin
+texlive-full sioyek imagemagick tinymist typst qt5-wayland harper
 
 ```
 
