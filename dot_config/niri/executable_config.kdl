@@ -40,12 +40,6 @@ prefer-no-csd
 // overview
 overview { backdrop-color "#000000"; }
 
-// gestures {
-//     hot-corners {
-//         off
-//     }
-// }
-
 // layout
 layout {
     background-color "transparent"
@@ -208,23 +202,8 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^niri$"
-    opacity 1.000000
-}
-
-window-rule {
     match title="^clipse$"
     open-floating true
-}
-
-window-rule {
-    match app-id="^emacs$"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="^firefox$" title="Private Browsing"
-    border { active-color "#FF0000"; }
 }
 
 window-rule {
