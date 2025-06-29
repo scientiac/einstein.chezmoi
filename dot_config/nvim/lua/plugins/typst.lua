@@ -5,7 +5,6 @@ return {
   opts = {
     formatterMode = "typstyle",
     invert_colors = '{"rest": "auto","image": "never"}',
-    port = 31415,
     open_cmd = 'qutebrowser %s'
   },
   config = function(_, opts)
