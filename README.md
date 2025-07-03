@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh eza less mpv ghostty neovim git chezmoi inkscape ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard
+zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard
 
 ```
 
@@ -43,7 +43,7 @@ zsh-fast-syntax-highlighting thefuck direnv fastfetch
 ### applications
 ```
 
-refine newsflash foliate valent signal-desktop-beta-bin keyguard steam 
+refine newsflash foliate valent signal-desktop-beta-bin keyguard steam inkscape
 
 ```
 
