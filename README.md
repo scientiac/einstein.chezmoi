@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh eza less mpv ghostty neovim git chezmoi inkscape ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git
+zsh eza less mpv ghostty neovim git chezmoi inkscape ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs
 
 ```
 
@@ -96,6 +96,6 @@ echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.co
 ### Removed
 ```zsh
 
-gnome-tweaks
+gnome-tweaks gnome-music
 
 ```
