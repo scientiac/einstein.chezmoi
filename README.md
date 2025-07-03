@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh eza less ghostty neovim git chezmoi inkscape ttf-fantasque-nerd webtorrent-cli tuned
+zsh eza less mpv ghostty neovim git chezmoi inkscape ttf-fantasque-nerd webtorrent-cli tuned
 
 ```
 
