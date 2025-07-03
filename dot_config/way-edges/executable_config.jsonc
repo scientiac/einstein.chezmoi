@@ -69,9 +69,9 @@
       "font-size": 30,
       "redraw-only-on-internal-update": true,
       "preset": {
-        "type": "custom",
-        "update-interval": 1000,
-        "update-command": "~/.config/way-edges/battery.sh"
+        "update-interval": 16000,
+        "update-command": "echo $(awk '{print $1/100}' /sys/class/power_supply/BAT0/capacity)",
+        "type": "custom"
       }
     },
     {
