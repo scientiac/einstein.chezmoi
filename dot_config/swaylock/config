@@ -1,0 +1,25 @@
+# Size
+indicator-radius=100
+indicator-thickness=5
+
+# Colors
+inside-color=00000000
+separator-color=00000000
+inside-ver-color=00000000
+inside-clear-color=00000000
+inside-wrong-color=00000000
+line-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-clear-color=00000000
+ring-ver-color=00000000
+ring-wrong-color=FF0000
+ring-clear-color=c3c3c3
+ring-ver-color=c3c3c3
+bs-hl-color=3a3b3c
+key-hl-color=c3c3c3
+ring-color=00000000
+text-color=00000000
+text-ver-color=00000000
+text-wrong-color=00000000
+text-clear-color=00000000
