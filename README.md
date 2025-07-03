@@ -43,7 +43,7 @@ zsh-fast-syntax-highlighting thefuck direnv fastfetch
 ### applications
 ```
 
-refine newsflash foliate valent signal-desktop-beta-bin keyguard steam inkscape
+refine newsflash foliate valent signal-desktop keyguard steam inkscape
 
 ```
 
