@@ -72,7 +72,7 @@ ttf-devanagarifonts lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-w
 ## Niri
 ```
 
-niri clipse swayosd mako brightnessctl wofi swww-git way-edges bemoji swaylock-effects-git swayidle xwayland-satellite-git
+niri clipse swayosd mako brightnessctl wofi swww-git way-edges-git bemoji swaylock-effects-git swayidle xwayland-satellite-git
 
 ```
 
