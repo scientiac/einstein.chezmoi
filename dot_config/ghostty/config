@@ -11,9 +11,7 @@ window-theme = "ghostty"
 
 linux-cgroup = "single-instance"
 gtk-single-instance = true
-gtk-tabs-location = "hidden"
 gtk-wide-tabs = false
-adw-toolbar-style = "flat"
 command = "zsh"
 shell-integration = zsh
 
