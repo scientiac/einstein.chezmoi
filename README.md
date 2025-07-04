@@ -20,7 +20,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard
+  zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils
 
 ```
 
@@ -90,6 +90,13 @@ systemctl --user add-wants niri.service swayidle.service
 
 mkdir -p ~/.config/environment.d
 echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.conf
+
+```
+
+### services to Enable
+```zsh
+
+sudo systemctl enable --now bluetooth.service
 
 ```
 
