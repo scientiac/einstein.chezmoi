@@ -96,6 +96,6 @@ echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.co
 ### Removed
 ```zsh
 
-gnome-tweaks gnome-music
+gnome-tweaks gnome-music totem
 
 ```
