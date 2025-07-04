@@ -103,6 +103,6 @@ sudo systemctl enable --now bluetooth.service
 ### Removed
 ```zsh
 
-gnome-tweaks gnome-music totem
+gnome-tweaks gnome-music totem gnome-connections
 
 ```
