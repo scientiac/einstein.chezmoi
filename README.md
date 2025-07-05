@@ -77,7 +77,7 @@ niri-git clipse swayosd mako brightnessctl wofi swww-git way-edges-git bemoji sw
 
 ```
 
-### systemd
+### swayidle
 Reload systemd and enable the `swayidle` service:
 ```zsh
 
@@ -94,22 +94,6 @@ echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.co
 
 ```
 
-### Nix
-```
-
-# Install packages
-nix zsh-nix-shell nix-zsh-completions
-
-# Start the Nix Daemon
-sudo systemctl enable --now nix-daemon
-
-# Add user to Nix Group
-sudo groupadd nixbld
-sudo usermod -a -G nixbld scientiac
-sudo groupadd nix-users
-sudo usermod -a -G nix-users scientiac
-
-```
 
 ### services to Enable
 ```zsh
@@ -122,5 +106,30 @@ sudo systemctl enable --now bluetooth.service
 ```zsh
 
 gnome-tweaks gnome-music totem gnome-connections simple-scan gnome-tour
+
+```
+
+## Nix
+### Install packages
+```
+
+nix zsh-nix-shell nix-zsh-completions
+
+```
+
+### Add user to Nix Group
+```
+
+sudo groupadd nixbld
+sudo usermod -a -G nixbld scientiac
+sudo groupadd nix-users
+sudo usermod -a -G nix-users scientiac
+
+```
+
+### Start the Nix Daemon
+```
+
+sudo systemctl enable --now nix-daemon
 
 ```
