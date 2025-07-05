@@ -10,6 +10,7 @@ gnome-shell-extension-caffeine
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-just-perfection-desktop
 gnome-shell-extension-unite
+gnome-shell-extension-appindicator
 
 ```
 
@@ -20,7 +21,7 @@ gnome-shell-extension-unite
 ### Main
 ```
 
-  zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils adw-gtk-theme
+  zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils adw-gtk-theme rustup
 
 ```
 
@@ -90,6 +91,23 @@ systemctl --user add-wants niri.service swayidle.service
 
 mkdir -p ~/.config/environment.d
 echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.conf
+
+```
+
+### Nix
+```
+
+# Install packages
+nix zsh-nix-shell nix-zsh-completions
+
+# Start the Nix Daemon
+sudo systemctl enable --now nix-daemon
+
+# Add user to Nix Group
+sudo groupadd nixbld
+sudo usermod -a -G nixbld scientiac
+sudo groupadd nix-users
+sudo usermod -a -G nix-users scientiac
 
 ```
 
