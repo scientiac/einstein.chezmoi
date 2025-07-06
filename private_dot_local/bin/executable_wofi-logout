@@ -18,7 +18,7 @@ choice=$(echo -e "$options" | wofi --dmenu \
 
 case $choice in
 "Lock")
-  blurlock
+  blurlock & niri msg action power-off-monitors
   ;;
 "Logout")
   loginctl terminate-user $USER
