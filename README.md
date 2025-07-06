@@ -1,6 +1,6 @@
 # einstein.chezmoi
 
-My dotfiles for Arch Linux managed by `chezmoi`.
+My dotfiles for Arch Linux managed by [chezmoi](https://www.chezmoi.io/).
 
 I am currently on gnome with the following extensions:
 ```
