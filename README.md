@@ -16,7 +16,7 @@ gnome-shell-extension-appindicator
 
 ## Packages
 `paru` as AUR helper.
-`determinate-nix` for dev environments.
+`nix` for dev environments.
 
 ### Main
 ```
