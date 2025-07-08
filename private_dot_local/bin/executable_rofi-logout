@@ -4,35 +4,32 @@ DCONF_COLOR_SCHEME="/org/gnome/desktop/interface/color-scheme"
 CURRENT_SCHEME=$(dconf read $DCONF_COLOR_SCHEME)
 
 if [ "$CURRENT_SCHEME" = "'prefer-dark'" ]; then
-  theme_option="LightMode"
+  theme_option="lightmode"
 else
-  theme_option="DarkMode"
+  theme_option="darkmode"
 fi
 
-options="Lock\nLogout\nReboot\nPoweroff\nSuspend\n$theme_option"
+options="lock\nlogout\nreboot\npoweroff\nsuspend\n$theme_option"
 
-choice=$(echo -e "$options" | wofi --dmenu \
-  --insensitive \
-  --width=50 \
-  --lines=7)
+choice=$(echo -e "$options" | rofi -dmenu -matching fuzzy -theme-str 'window { width: 49.5%; }')
 
 case $choice in
-"Lock")
+"lock")
   blurlock & niri msg action power-off-monitors
   ;;
-"Logout")
+"logout")
   loginctl terminate-user $USER
   ;;
-"Reboot")
+"reboot")
   systemctl reboot
   ;;
-"Poweroff")
+"poweroff")
   systemctl poweroff
   ;;
-"Suspend")
+"suspend")
   systemctl suspend
   ;;
-"DarkMode"|"LightMode")
+"darkmode"|"lightmode")
   themetoggle
   ;;
 *)
