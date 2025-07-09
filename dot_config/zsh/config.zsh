@@ -216,6 +216,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Wifi QR
+alias wifiqr='nmcli device wifi show-password'
+
 # ============================================================================
 # FUNCTIONS
 # ============================================================================

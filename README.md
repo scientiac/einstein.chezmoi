@@ -32,6 +32,13 @@ texlive-full sioyek imagemagick tinymist typst qt5-wayland harper
 
 ```
 
+### mpv
+```
+
+mpv-modernz-git  mpv-thumbfast-git
+
+```
+
 ### zsh
 ```
 
