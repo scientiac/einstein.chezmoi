@@ -80,7 +80,14 @@ ttf-devanagarifonts lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-w
 ## Niri
 ```
 
-niri-git clipse swayosd mako brightnessctl rofi-wayland swww-git way-edges-git bemoji swaylock-effects-git swayidle xwayland-satellite-git
+niri-git clipse swayosd mako brightnessctl swww-git way-edges-git bemoji swaylock-effects-git swayidle xwayland-satellite-git
+
+```
+
+### Rofi
+```
+
+rofi-wayland bemoji rofi-calc bzmenu 
 
 ```
 
