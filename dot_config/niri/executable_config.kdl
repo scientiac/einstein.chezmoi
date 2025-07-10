@@ -84,7 +84,7 @@ binds {
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "ghostty --title='clipse' -e 'clipse'"; }
     Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi"; }
-    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show drun; fi"; }
+    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi"; }
 
     // screenshot
     Print { screenshot; }

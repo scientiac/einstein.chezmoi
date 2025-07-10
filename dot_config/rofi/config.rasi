@@ -1,14 +1,16 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       [drun,calc,filebrowser,run,tuned];
-  show-icons:                 false;
-  display-drun:               "";
-  display-run:                "";
-  display-filebrowser:        "";
-  display-window:             "";
-  display-calc:               "󰪚";
-  display-tuned:              "";
-	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    modi:                   [combi,drun,calc,filebrowser,run,tuned];
+    combi-modi:             [drun, filebrowser, run, tuned];
+    show-icons:             false;
+    display-drun:           "";
+    display-combi:          "";
+    display-run:            "";
+    display-filebrowser:    "";
+    display-window:         "";
+    display-calc:           "󰪚";
+    display-tuned:          "";
+    drun-display-format:    "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 }
 
 /*****----- Global Properties -----*****/
