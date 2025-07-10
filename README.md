@@ -87,7 +87,7 @@ niri-git clipse swayosd mako brightnessctl swww-git way-edges-git bemoji swayloc
 ### Rofi
 ```
 
-rofi-wayland bemoji rofi-calc bzmenu 
+rofi-wayland bemoji bzmenu 
 
 ```
 
