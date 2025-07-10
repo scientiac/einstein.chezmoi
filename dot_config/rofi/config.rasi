@@ -1,14 +1,12 @@
 /*****----- Configuration -----*****/
 configuration {
-    modi:                   [combi,drun,calc,filebrowser,run,tuned];
+    modi:                   [combi,drun,filebrowser,run,tuned];
     combi-modi:             [drun, filebrowser, run, tuned];
     show-icons:             false;
     display-drun:           "";
     display-combi:          "";
     display-run:            "";
     display-filebrowser:    "";
-    display-window:         "";
-    display-calc:           "󰪚";
     display-tuned:          "";
     drun-display-format:    "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 }
