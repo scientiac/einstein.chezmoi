@@ -1,13 +1,14 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       [drun,filebrowser];
+	modi:                       [drun,calc,filebrowser,run,tuned];
   show-icons:                 false;
   display-drun:               "";
   display-run:                "";
   display-filebrowser:        "";
   display-window:             "";
+  display-calc:               "󰪚";
+  display-tuned:              "";
 	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
@@ -212,7 +213,7 @@ element alternate.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        24px;
+    size:                        14px;
     cursor:                      inherit;
 }
 element-text {
