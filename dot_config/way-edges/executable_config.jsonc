@@ -27,8 +27,8 @@
       "type": "btn",
       "color": "#3a3b3c",
       "event-map": {
-        "272": "sh -c \"if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi\"",
-        "273": "sh -c \"if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi\""
+        "272": "nohup sh -c \"if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi\" &",
+        "273": "nohup sh -c \"if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi\" &"
       }
     },
     {
