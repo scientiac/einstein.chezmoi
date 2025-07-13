@@ -1,13 +1,14 @@
 /*****----- Configuration -----*****/
 configuration {
-    modi:                   [combi, drun, filebrowser, run, power];
-    combi-modi:             [drun, run, power];
+    modi:                   [combi, drun, filebrowser, run, power, caffeine];
+    combi-modi:             [drun, run, power, caffeine];
     show-icons:             false;
     display-drun:           "";
     display-combi:          "";
     display-run:            "";
     display-filebrowser:    "";
     display-power:          "";
+    display-caffeine:       "";
     drun-display-format:    "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 }
 
