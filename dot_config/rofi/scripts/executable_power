@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+# Define the actual tuned-adm profile names
+PROFILES_INTERNAL=(
+    "powersave"
+    "desktop"
+    "default"
+    "balanced"
+    "throughput-performance"
+)
+
+# Define the display names with Nerd Font icons
+declare -A PROFILES_DISPLAY
+PROFILES_DISPLAY["powersave"]="󰌪 Powersave"
+PROFILES_DISPLAY["desktop"]="󰌢 Desktop"
+PROFILES_DISPLAY["default"]="󰋜 Default"
+PROFILES_DISPLAY["balanced"]="󰇧 Balanced"
+PROFILES_DISPLAY["throughput-performance"]="󱐌 Performance"
+
+display_menu() {
+    CURRENT_PROFILE=$(tuned-adm active | awk '{print $NF}')
+
+    for internal_profile in "${PROFILES_INTERNAL[@]}"; do
+        display_name="${PROFILES_DISPLAY[$internal_profile]}"
+        if [[ "$internal_profile" == "$CURRENT_PROFILE" ]]; then
+            echo "$display_name (active)"
+        else
+            echo "$display_name"
+        fi
+    done
+}
+
+apply_profile() {
+    local selected_display_name_raw="$1"
+    local selected_display_name=$(echo "$selected_display_name_raw" | sed 's/ (active)//')
+
+    local actual_profile=""
+    case "$selected_display_name" in
+        "󰌪 Powersave") actual_profile="powersave" ;;
+        "󰌢 Desktop") actual_profile="desktop" ;;
+        "󰋜 Default") actual_profile="default" ;;
+        "󰇧 Balanced") actual_profile="balanced" ;;
+        "󱐌 Performance") actual_profile="throughput-performance" ;;
+        *)
+            notify-send -u critical "Tuned Profile Error" "Unknown profile selected: '$selected_display_name'."
+            return 1
+            ;;
+    esac
+
+    if [[ -n "$actual_profile" ]]; then
+        tuned-adm profile "$actual_profile" &> /dev/null
+
+        if [[ $? -eq 0 ]]; then
+            notify-send "Tuned Profile Changed" "Switched to '$actual_profile' profile."
+        else
+            notify-send -u critical "Tuned Profile Error" "Failed to switch to '$actual_profile' profile. Check system logs for details."
+        fi
+    fi
+}
+
+if [[ "$#" -eq 0 ]]; then
+    display_menu
+else
+    apply_profile "$1"
+fi
