@@ -83,8 +83,8 @@ binds {
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "ghostty --title='clipse' -e 'clipse'"; }
-    Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi"; }
-    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi"; }
+    Alt+Shift+E { spawn "sh" "-c" "pkill rofi || rofi-logout"; }
+    Alt+Space { spawn "sh" "-c" "pkill rofi || rofi -show"; }
 
     // screenshot
     Print { screenshot; }
