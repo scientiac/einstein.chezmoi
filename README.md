@@ -21,7 +21,7 @@ gnome-shell-extension-appindicator
 ### Main
 ```
 
-  zsh eza less mpv ghostty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils adw-gtk-theme rustup
+  zsh eza less mpv ghostty kitty neovim git chezmoi ttf-fantasque-nerd webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils adw-gtk-theme rustup
 
 ```
 
