@@ -79,12 +79,12 @@ environment {
 binds {
     Mod+E { spawn "neovide"; }
     Alt+Period { spawn "bemoji"; }
-    Mod+Return { spawn "kitty"; }
+    Mod+Return { spawn "ghostty"; }
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
-    Alt+Shift+E { spawn "sh" "-c" "pkill rofi || rofi-logout"; }
-    Alt+Space { spawn "sh" "-c" "pkill rofi || rofi -show"; }
+    Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi"; }
+    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi"; }
 
     // screenshot
     Print { screenshot; }
