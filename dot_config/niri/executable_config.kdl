@@ -79,7 +79,7 @@ environment {
 binds {
     Mod+E { spawn "neovide"; }
     Alt+Period { spawn "bemoji"; }
-    Mod+Return { spawn "ghostty"; }
+    Mod+Return { spawn "kitty"; }
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
