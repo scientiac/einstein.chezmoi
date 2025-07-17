@@ -73,7 +73,7 @@ qutebrowser pdfjs python-adblock qt6-wayland
 ### fonts
 ```
 
-ttf-devanagarifonts lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-win11-auto ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji
+ttf-terminus-nerd lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-win11-auto ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji
 
 ```
 
