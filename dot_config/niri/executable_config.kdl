@@ -83,8 +83,8 @@ binds {
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
-    Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi-logout; fi"; }
-    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill $(pidof rofi); else rofi -show; fi"; }
+    Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill -9 $(pidof rofi); else rofi-logout; fi"; }
+    Alt+Space { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill -9 $(pidof rofi); else rofi -show; fi"; }
 
     // screenshot
     Print { screenshot; }
@@ -170,7 +170,7 @@ binds {
     Mod+XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --brightness +5"; }
     Mod+XF86AudioLowerVolume { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
 
-    XF86Calculator { spawn "sh" "-c" "if pidof gnome-calculator > /dev/null; then kill $(pidof gnome-calculator); else gnome-calculator; fi"; }
+    XF86Calculator { spawn "sh" "-c" "if pidof gnome-calculator > /dev/null; then kill -9 $(pidof gnome-calculator); else gnome-calculator; fi"; }
 }
 
 switch-events { lid-close { spawn "blurlock"; }; }
