@@ -32,7 +32,6 @@ setopt COMPLETE_IN_WORD         # Allow completion from within a word/phrase
 
 # Correction
 setopt CORRECT                  # Spelling correction for commands
-setopt CORRECT_ALL              # Spelling correction for arguments
 
 # Prompt
 setopt PROMPT_SUBST             # Enable parameter expansion, command substitution, and arithmetic expansion in prompts
