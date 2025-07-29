@@ -44,7 +44,7 @@ mpv-modernz-git  mpv-thumbfast-git
 
 zoxide fzf fd bat ripgrep tree dust git-delta lazygit
 zsh-completions zsh-history-substring-search zsh-you-should-use zsh-autosuggestions
-zsh-fast-syntax-highlighting thefuck direnv fastfetch
+zsh-fast-syntax-highlighting thefuck direnv fastfetch zsh-pure-prompt
 
 ```
 
