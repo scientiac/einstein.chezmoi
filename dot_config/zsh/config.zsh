@@ -64,6 +64,24 @@ compinit
 # Load additional completions
 fpath=(/usr/share/zsh/site-functions $fpath)
 
+# Initialize prompt system
+autoload -U promptinit; 
+promptinit
+prompt pure
+
+# Your list of random words
+WORDS=(gfx math rust cse)
+
+# Hook to update RPROMPT with a random word
+precmd_random_word() {
+  local word="${WORDS[RANDOM % ${#WORDS[@]} + 1]}"
+  RPROMPT="%F{242}$word%f"
+}
+
+# Register the hook
+autoload -U add-zsh-hook
+add-zsh-hook precmd precmd_random_word
+
 # Completion styling
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
@@ -149,9 +167,6 @@ source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 # EXTERNAL TOOLS
 # ============================================================================
 
-# Starship prompt
-eval "$(starship init zsh)"
-
 # Zoxide (better cd)
 eval "$(zoxide init zsh)"
 
@@ -167,9 +182,6 @@ export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 
 # Direnv (automatic environment loading)
 eval "$(direnv hook zsh)"
-
-# TheFuck (command correction)
-eval $(thefuck --alias)
 
 # ============================================================================
 # ALIASES
