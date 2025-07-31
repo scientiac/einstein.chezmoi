@@ -126,7 +126,23 @@ vim.lsp.config["tinymist"] = {
     filetypes = { "typst" },
     settings = {
         formatterMode = "typstyle"
-    }
+    },
+    on_attach = function(client, bufnr)
+        -- Pin current file as main
+        vim.keymap.set("n", "<leader>tp", function()
+            client:request("workspace/executeCommand", {
+                command = "tinymist.pinMain",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+            })
+        end, { desc = "Tinymist pin main", buffer = bufnr, noremap = true })
+        -- Unpin current main file
+        vim.keymap.set("n", "<leader>tu", function()
+            client:request("workspace/executeCommand", {
+                command = "tinymist.pinMain",
+                arguments = { vim.NIL },
+            })
+        end, { desc = "Tinymist unpin main", buffer = bufnr, noremap = true })
+    end
 }
 
 vim.lsp.config["harper_ls"] = {
