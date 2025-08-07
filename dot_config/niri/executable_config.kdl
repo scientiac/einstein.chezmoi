@@ -23,7 +23,7 @@ input {
     mouse { accel-speed 1.000000; }
     trackpoint { accel-speed 0.000000; }
     trackball { accel-speed 0.000000; }
-    focus-follows-mouse max-scroll-amount="95%"
+    // focus-follows-mouse max-scroll-amount="95%"
 }
 
 // cursor
@@ -79,6 +79,7 @@ environment {
 // keyboard bindings
 binds {
     Mod+E { spawn "neovide"; }
+    Mod+Alt+F { spawn "wl-kbptr"; }
     Alt+Period { spawn "bemoji"; }
     Mod+Return { spawn "kitty"; }
     Alt+Shift+L { spawn "blurlock"; }
