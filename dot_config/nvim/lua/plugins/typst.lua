@@ -4,7 +4,7 @@ return {
   version = '1.*',
   opts = {
     formatterMode = "typstyle",
-    invert_colors = '{"rest": "auto","image": "never"}',
+    -- invert_colors = '{"rest": "auto","image": "never"}',
     open_cmd = 'qutebrowser %s'
   },
   config = function(_, opts)
