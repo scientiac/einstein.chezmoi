@@ -185,6 +185,7 @@ spawn-at-startup "clipse" "-listen"
 spawn-at-startup "swww-daemon" "-n" "wp-back"
 spawn-at-startup "swww-daemon" "-n" "wp-front"
 spawn-at-startup "sh" "-c" "way-edges & sleep 2; way-edges add niri"
+spawn-at-startup "sh" "-c" "flatpak run --command=valent ca.andyholmes.Valent --gapplication-service"
 
 // overview wallpaper
 layer-rule {
