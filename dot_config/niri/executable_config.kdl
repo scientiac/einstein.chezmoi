@@ -83,6 +83,7 @@ binds {
     Alt+Period { spawn "bemoji"; }
     Mod+Return { spawn "kitty"; }
     Alt+Shift+L { spawn "blurlock"; }
+    Mod+Alt+R { spawn "recover"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
     Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
     Alt+Shift+E { spawn "sh" "-c" "if pidof rofi > /dev/null; then kill -9 $(pidof rofi); else rofi-logout; fi"; }
