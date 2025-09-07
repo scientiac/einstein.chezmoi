@@ -180,6 +180,7 @@ switch-events { lid-close { spawn "blurlock"; }; }
 
 // startup spawn
 spawn-at-startup "mako"
+spawn-at-startup "poweralertd"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "clipse" "-listen"

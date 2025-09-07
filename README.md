@@ -80,7 +80,7 @@ ttf-terminus-nerd lohit-fonts ttf-indic-otf noto-fonts-cjk ttf-roboto ttf-ms-win
 ## Niri
 ```
 
-niri-git clipse swayosd mako brightnessctl swww-git way-edges-git bemoji swaylock-effects-git swayidle xwayland-satellite-git
+niri-git clipse swayosd mako brightnessctl swww-git way-edges-git bemoji swaylock-effects-git swayidle xwayland-satellite-git upower poweralertd
 
 ```
 
