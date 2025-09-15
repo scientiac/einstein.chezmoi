@@ -81,7 +81,7 @@ binds {
     Mod+E { spawn "neovide"; }
     Mod+Alt+F { spawn "wl-kbptr"; }
     Alt+Period { spawn "bemoji"; }
-    Mod+Return { spawn "kitty"; }
+    Mod+Return { spawn "ghostty"; }
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Alt+R { spawn "recover"; }
     Mod+Space { spawn "sh" "-c" "togglebar"; }
