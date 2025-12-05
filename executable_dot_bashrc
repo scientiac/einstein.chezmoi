@@ -1,0 +1,36 @@
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+export EDITOR=nvim
+
+#NIX
+export PATH=$PATH:/nix/var/nix/profiles/default/bin
+
+# NPM
+export NPM_CONFIG_PREFIX=$HOME/.local/
+export PATH="/home/$USER/go/bin:/home/$USER/.local/bin:$NPM_CONFIG_PREFIX/bin:$PATH"
+
+# Rust
+source "$HOME/.cargo/env"
+export PATH=$PATH:~/.cargo/bin/
+
+# Go
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# starship
+eval "$(starship init bash)"
+
+# zoxide
+eval "$(zoxide init bash)"
+
+# direnv
+eval "$(direnv hook bash)"
+
+alias ls="eza --group-directories-first"
+alias lg=lazygit
+
+export PATH=$PATH:/home/scientiac/.spicetify
+. "$HOME/.cargo/env"
