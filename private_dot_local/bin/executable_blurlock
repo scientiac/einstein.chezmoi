@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-niri msg action do-screen-transition
-swaylock --effect-blur 12x12 --screenshots
