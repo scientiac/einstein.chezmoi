@@ -1,0 +1,4 @@
+source ~/.config/zsh/config.zsh
+
+
+export PATH=$PATH:/home/scientiac/.spicetify

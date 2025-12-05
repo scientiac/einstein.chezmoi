@@ -1,0 +1,22 @@
+title = "Ghostty"
+theme = light:Gruvbox Light,dark:GruvboxDarkIac
+font-size = 12
+font-family = "FantasqueSansM Nerd Font Mono"
+mouse-hide-while-typing = true
+
+window-padding-x = 8
+gtk-titlebar = false
+window-theme = "ghostty"
+
+linux-cgroup = "single-instance"
+gtk-single-instance = true
+gtk-wide-tabs = false
+command = /home/scientiac/.config/ghostty/tmux.sh
+shell-integration = zsh
+
+quick-terminal-position = "top"
+
+keybind=ctrl+shift+o=toggle_tab_overview
+keybind=ctrl+a=toggle_quick_terminal
+
+custom-shader=~/.config/ghostty/cursor.glsl
