@@ -1,4 +1,4 @@
-# einstein.chezmoi
+# arch.gnome.niri.chezmoi
 
 My dotfiles for Arch Linux managed by [chezmoi](https://www.chezmoi.io/).
 
