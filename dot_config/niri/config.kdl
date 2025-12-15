@@ -1,0 +1,233 @@
+// display
+output "eDP-1" {
+    scale 1.660000
+    transform "normal"
+    // mode "2880x1800@60.001000"
+    mode "2880x1800@120.001000"
+}
+
+// input
+input {
+    keyboard {
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 0.000000
+        click-method "clickfinger"
+    }
+    mouse { accel-speed 1.000000; }
+    trackpoint { accel-speed 0.000000; }
+    trackball { accel-speed 0.000000; }
+}
+
+// cursor
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+
+prefer-no-csd
+
+// overview
+overview { backdrop-color "#000000"; }
+
+// layout
+layout {
+    background-color "transparent"
+    gaps 4
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    focus-ring {
+        width 0
+        active-color "#3a3b3c00"
+        inactive-color "rgb(80 80 80)"
+    }
+    border { off; }
+    insert-hint { color "rgb(127 200 255 / 50%)"; }
+    default-column-width
+    center-focused-column "never"
+    always-center-single-column
+}
+
+// remove overview
+hotkey-overlay { skip-at-startup; }
+
+// wayland display environment
+environment { 
+    DISPLAY ":0"; 
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    QT_QPA_PLATFORM "wayland"
+    MOZ_ENABLE_WAYLAND "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+}
+
+// keyboard bindings
+binds {
+    Mod+E { spawn "neovide"; }
+    Mod+Alt+F { spawn "wl-kbptr"; }
+    Alt+Period { spawn "bemoji"; }
+    Mod+Return { spawn "ghostty"; }
+    Alt+Shift+L { spawn "blurlock"; }
+    Mod+Alt+R { spawn "recover"; }
+    Mod+Space { spawn "sh" "-c" "togglebar"; }
+    Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
+    Alt+Space { spawn "walker"; }
+
+    // screenshot
+    Print { screenshot; }
+    Mod+Print { screenshot-window; }
+    Mod+Shift+S { screenshot-screen; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+C { center-column; }
+    Mod+Backspace { close-window; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Comma { consume-or-expel-window-left; }
+    Mod+Period { consume-or-expel-window-right; }
+    Mod+Ctrl+Escape { toggle-window-floating; }
+    Mod+Down { focus-window-or-workspace-down; }
+
+    Mod+F { maximize-column; }
+    Mod+R { switch-preset-column-width; }
+
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+
+    Mod+Left { focus-column-left; }
+    Mod+Right { focus-column-right; }
+
+    Mod+Escape { switch-focus-between-floating-and-tiling; }
+
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up { move-window-up-or-to-workspace-up; }
+    Mod+Shift+Down { move-window-down-or-to-workspace-down; }
+
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Minus { set-column-width "-10%"; }
+
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Shift+Tab { focus-window-up-or-column-left; }
+
+    Mod+Tab { focus-window-down-or-column-right; }
+    Mod+Up { focus-window-or-workspace-up; }
+
+    XF86AudioLowerVolume { spawn "sh" "-c" "swayosd-client --output-volume -5 --max-volume 100"; }
+    XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --output-volume +5 --max-volume 100"; }
+
+    XF86AudioMicMute { spawn "sh" "-c" "swayosd-client --input-volume mute-toggle"; }
+    XF86AudioMute { spawn "sh" "-c" "swayosd-client --output-volume mute-toggle"; }
+
+    XF86MonBrightnessUp { spawn "sh" "-c" "swayosd-client --brightness +5"; }
+    XF86MonBrightnessDown { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+
+    Mod+XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --brightness +5"; }
+    Mod+XF86AudioLowerVolume { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+
+    XF86Calculator { spawn "sh" "-c" "if pidof gnome-calculator > /dev/null; then kill -9 $(pidof gnome-calculator); else gnome-calculator; fi"; }
+}
+
+switch-events { lid-close { spawn "blurlock"; }; }
+
+// startup spawn
+spawn-at-startup "mako"
+spawn-at-startup "elephant"
+spawn-at-startup "way-edges"
+spawn-at-startup "battery-osd"
+spawn-at-startup "walker" "--gapplication-service"
+spawn-at-startup "nm-applet"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "awww-start"
+spawn-at-startup "clipse" "-listen"
+spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
+
+// overview wallpaper
+layer-rule {
+    match namespace="wp-back"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="waybar"
+    place-within-backdrop true
+}
+
+window-rule {
+    draw-border-with-background true
+    geometry-corner-radius 8.000000 8.000000 8.000000 8.000000
+    clip-to-geometry true
+}
+
+window-rule {
+    match is-focused=false
+    opacity 0.950000
+}
+
+window-rule {
+    match title="^clipse$"
+    open-floating true
+}
+
+window-rule {
+    match title="Firefox - Choose a profile"
+    open-floating true
+}
+
+window-rule {
+    match title=r#"^Typst Preview -"#
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="^signal$"
+    block-out-from "screencast"
+}
+
+animations { slowdown 1.000000; }
