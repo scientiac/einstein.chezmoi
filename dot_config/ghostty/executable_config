@@ -11,12 +11,12 @@ window-theme = "ghostty"
 linux-cgroup = "single-instance"
 gtk-single-instance = true
 gtk-wide-tabs = false
-command = /home/scientiac/.config/ghostty/tmux.sh
+command = zsh
 shell-integration = zsh
 
 quick-terminal-position = "top"
 
 keybind=ctrl+shift+o=toggle_tab_overview
-keybind=ctrl+a=toggle_quick_terminal
+keybind=ctrl+s=toggle_quick_terminal
 
 custom-shader=~/.config/ghostty/cursor.glsl
