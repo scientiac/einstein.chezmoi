@@ -1,0 +1,15 @@
+[Unit]
+Description=Wayland idle manager (swayidle)
+PartOf=graphical-session.target
+After=graphical-session.target niri.service
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle -w -i
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target
+
