@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+awww-daemon -n wp-front &
+awww-daemon -n wp-back &
