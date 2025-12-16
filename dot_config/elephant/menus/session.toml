@@ -1,0 +1,52 @@
+name = "session"
+name_pretty = "Session Manager"
+icon = "system-shutdown"
+
+# ──────────────────────────────────────────────────────────────
+# Lock
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Lock"
+icon = "system-lock-screen"
+actions = { lock = "blurlock & sleep 1; niri msg action power-off-monitors" }
+
+# ──────────────────────────────────────────────────────────────
+# Suspend (confirmation submenu)
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Suspend"
+icon = "radio-mixed"
+submenu = "session-suspend-confirm"
+
+# ──────────────────────────────────────────────────────────────
+# Logout (confirmation submenu)
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Logout"
+icon = "system-log-out"
+submenu = "session-logout-confirm"
+
+# ──────────────────────────────────────────────────────────────
+# Reboot (confirmation submenu)
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Reboot"
+icon = "system-reboot"
+submenu = "session-reboot-confirm"
+
+# ──────────────────────────────────────────────────────────────
+# Shutdown (confirmation submenu)
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Shutdown"
+icon = "system-shutdown"
+submenu = "session-shutdown-confirm"
+
+# ──────────────────────────────────────────────────────────────
+# Theme toggle (dark/light)
+# ──────────────────────────────────────────────────────────────
+[[entries]]
+text = "Toggle Theme"
+keywords = ["theme", "dark", "light"]
+icon = "preferences-color"
+actions = { toggle_theme = "themetoggle" }

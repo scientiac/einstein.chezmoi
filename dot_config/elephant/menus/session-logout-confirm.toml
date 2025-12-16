@@ -1,0 +1,15 @@
+name = "session-logout-confirm"
+name_pretty = "Confirm Logout"
+icon = "dialog-question"
+hide_from_providerlist = true
+
+[[entries]]
+text = "Logout"
+icon = "system-log-out"
+actions = { logout = "niri msg action quit" }
+
+[[entries]]
+text = "Cancel"
+icon = "radio"
+actions = { cancel = "true" }
+

@@ -1,0 +1,14 @@
+name = "session-shutdown-confirm"
+name_pretty = "Confirm Shutdown"
+icon = "dialog-question"
+hide_from_providerlist = true
+
+[[entries]]
+text = "Shutdown"
+icon = "system-shutdown"
+actions = { shutdown = "systemctl poweroff --no-wall" }
+
+[[entries]]
+text = "Cancel"
+icon = "radio"
+actions = { cancel = "true" }

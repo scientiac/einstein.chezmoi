@@ -1,0 +1,14 @@
+name = "session-suspend-confirm"
+name_pretty = "Confirm Suspend"
+icon = "dialog-question"
+hide_from_providerlist = true
+
+[[entries]]
+text = "Suspend"
+icon = "radio-mixed"
+actions = { suspend = "systemctl suspend" }
+
+[[entries]]
+text = "Cancel"
+icon = "radio"
+actions = { cancel = "true" }

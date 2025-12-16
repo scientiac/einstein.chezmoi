@@ -1,0 +1,14 @@
+name = "session-reboot-confirm"
+name_pretty = "Confirm Reboot"
+icon = "dialog-question"
+hide_from_providerlist = true
+
+[[entries]]
+text = "Reboot"
+icon = "system-reboot"
+actions = { reboot = "systemctl reboot --no-wall" }
+
+[[entries]]
+text = "Cancel"
+icon = "radio"
+actions = { cancel = "true" }
