@@ -54,28 +54,47 @@
     {
       "namespace": "battery",
       "edge": "top",
+      "position": "right",
+      "margins": {
+        "right": "0.1%"
+      },
       "monitor": "eDP-1",
       "layer": "overlay",
-      "margins": {
-        "left": "25%"
+      "type": "wrap-box",
+      "event-map": {
+        "272": "sh -c 'swaync-client -t -sw'" // left click
       },
-      "position": "right",
-      "preview-size": 0,
-      "type": "slider",
-      "thickness": 30,
-      "border-width": 4,
-      "length": "5%",
-      "fg-color": "#000000",
-      "font-size": 30,
-      "redraw-only-on-internal-update": true,
-      "preset": {
-        "update-interval": 16000,
-        "update-command": "echo $(awk '{print $1/100}' /sys/class/power_supply/BAT0/capacity)",
-        "type": "custom",
-        "event-map": {
-          "272": "swaync-client -t -sw"
+      "outlook": {
+        "type": "window",
+        "border-radius": 15,
+        "border-width": 4,
+        "color": "#000000",
+        "corners": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "margins": {
+          "top": 3,
+          "left": 20,
+          "right": 20,
+          "bottom": 0
         }
-      }
+      },
+      "items": [
+        {
+          "type": "text",
+          "fg-color": "#fff",
+          "font-size": 25,
+          "font-family": "FantasqueSansM Nerd Font",
+          "preset": {
+            "type": "custom",
+            "cmd": "echo $(cat /sys/class/power_supply/BAT0/capacity)/$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold)%",
+            "update-interval": 1000
+          }
+        }
+      ]
     },
     {
       "namespace": "brightness",
