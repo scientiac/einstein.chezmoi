@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+way-edges togglepin time
+way-edges togglepin brightness
+way-edges togglepin battery
+way-edges togglepin speaker
+way-edges togglepin microphone
+way-edges togglepin desktops
+way-edges togglepin tray

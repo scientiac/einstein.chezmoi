@@ -83,6 +83,7 @@ binds {
     Mod+Alt+R { spawn "recover"; }
     Mod+Shift+V { spawn "walker" "-m" "clipboard"; }
     Alt+Space { spawn "walker"; }
+    Mod+Alt+B { spawn "togglebar"; }
     Alt+Shift+E { spawn "walker" "-m" "menus:session"; }
 
     // screenshot
