@@ -178,7 +178,7 @@ switch-events { lid-close { spawn "blurlock"; }; }
 spawn-at-startup "elephant"
 spawn-at-startup "walker" "--gapplication-service"
 spawn-at-startup "way-edges"
-spawn-at-startup "mako"
+spawn-at-startup "swaync"
 spawn-at-startup "battery-osd"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swayosd-server"
