@@ -71,7 +71,10 @@
       "preset": {
         "update-interval": 16000,
         "update-command": "echo $(awk '{print $1/100}' /sys/class/power_supply/BAT0/capacity)",
-        "type": "custom"
+        "type": "custom",
+        "event-map": {
+          "272": "swaync-client -t -sw"
+        }
       }
     },
     {
