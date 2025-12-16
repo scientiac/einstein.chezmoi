@@ -2,3 +2,5 @@
 
 awww-daemon -n wp-front &
 awww-daemon -n wp-back &
+sleep 0.5
+swc

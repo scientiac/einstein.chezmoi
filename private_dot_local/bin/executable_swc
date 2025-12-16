@@ -7,16 +7,27 @@ LIGHT_CACHE=~/.cache/light_wall
 DARK_CACHE=~/.cache/dark_wall
 BLUR_CACHE_DIR=~/.cache/wallpaper_blur
 
+DCONF_COLOR_SCHEME="/org/gnome/desktop/interface/color-scheme"
+
 # Create blur cache directory if it doesn't exist
 mkdir -p "$BLUR_CACHE_DIR"
 
-# Set directory and cache file based on argument
+# Set directory and cache file based on argument or current theme
 if [[ "$1" == "light" ]]; then
 	WALL_DIR="$LIGHT_DIR"
 	CACHE_FILE="$LIGHT_CACHE"
 elif [[ "$1" == "dark" ]]; then
 	WALL_DIR="$DARK_DIR"
 	CACHE_FILE="$DARK_CACHE"
+elif [[ -z "$1" ]]; then
+	CURRENT_SCHEME=$(dconf read "$DCONF_COLOR_SCHEME")
+	if [[ "$CURRENT_SCHEME" == "'prefer-dark'" ]]; then
+		WALL_DIR="$DARK_DIR"
+		CACHE_FILE="$DARK_CACHE"
+	else
+		WALL_DIR="$LIGHT_DIR"
+		CACHE_FILE="$LIGHT_CACHE"
+	fi
 else
 	echo "Usage: $0 [light|dark]"
 	exit 1
