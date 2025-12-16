@@ -77,15 +77,13 @@ environment {
 
 // keyboard bindings
 binds {
-    Mod+E { spawn "neovide"; }
-    Mod+Alt+F { spawn "wl-kbptr"; }
-    Alt+Period { spawn "bemoji"; }
+    Alt+Period { spawn "walker" "-m" "symbols"; }
     Mod+Return { spawn "ghostty"; }
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Alt+R { spawn "recover"; }
-    Mod+Space { spawn "sh" "-c" "togglebar"; }
-    Mod+V { spawn "sh" "-c" "kitty --title clipse -e 'clipse'"; }
+    Mod+Shift+V { spawn "walker" "-m" "clipboard"; }
     Alt+Space { spawn "walker"; }
+    Alt+Shift+E { spawn "walker" "-m" "menus:session"; }
 
     // screenshot
     Print { screenshot; }
@@ -177,11 +175,11 @@ binds {
 switch-events { lid-close { spawn "blurlock"; }; }
 
 // startup spawn
-spawn-at-startup "mako"
 spawn-at-startup "elephant"
-spawn-at-startup "way-edges"
-spawn-at-startup "battery-osd"
 spawn-at-startup "walker" "--gapplication-service"
+spawn-at-startup "way-edges"
+spawn-at-startup "mako"
+spawn-at-startup "battery-osd"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "awww-start"
