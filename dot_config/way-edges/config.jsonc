@@ -61,9 +61,6 @@
       "monitor": "eDP-1",
       "layer": "overlay",
       "type": "wrap-box",
-      "event-map": {
-        "272": "sh -c 'swaync-client -t -sw'" // left click
-      },
       "outlook": {
         "type": "window",
         "border-radius": 15,
@@ -88,6 +85,9 @@
           "fg-color": "#fff",
           "font-size": 25,
           "font-family": "FantasqueSansM Nerd Font",
+          "event-map": {
+            "mouse-left": "swaync-client -t -sw"
+          },
           "preset": {
             "type": "custom",
             "cmd": "echo $(cat /sys/class/power_supply/BAT0/capacity)/$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold)%",
