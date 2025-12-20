@@ -211,8 +211,8 @@ alias h='history'
 
 # Safety aliases
 alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
 
 # Wifi QR
 alias wifiqr='nmcli device wifi show-password'
