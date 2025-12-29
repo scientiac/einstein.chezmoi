@@ -283,6 +283,8 @@ export TERM='xterm-256color'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/env:$PATH"
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Wayland
 # Wayland for Qt apps
