@@ -186,7 +186,6 @@ vim.lsp.config.clangd = {
     "--completion-style=detailed",
     "--function-arg-placeholders",
     "--fallback-style=llvm",
-    "--query-driver=/home/scientiac/.espressif/tools/riscv32-esp-elf/**"
   },
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
   root_markers = { 
