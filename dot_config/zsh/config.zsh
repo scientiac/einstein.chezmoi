@@ -1,4 +1,4 @@
-# ~/.zshrc - A Modern Zsh Configuration
+# ~/.zshrc
 
 # ============================================================================
 # ZSH OPTIONS
@@ -49,6 +49,12 @@ setopt AUTO_RESUME             # Attempt to resume existing job before creating 
 # ============================================================================
 
 HISTFILE=~/.local/share/zsh/zsh_history
+
+# Create the directory if it doesn't exist
+mkdir -p ~/.local/share/zsh
+# Create the history file only if it doesn't already exist
+[[ ! -f "$HISTFILE" ]] && touch "$HISTFILE"
+
 HISTSIZE=50000
 SAVEHIST=50000
 
@@ -180,7 +186,6 @@ alias lt='eza --tree --icons --group-directories-first'
 alias la='eza -la --icons --group-directories-first --all'
 
 # Editors
-alias nv='neovide'
 alias nvim='command nvim'
 alias vim='command nvim'
 alias vi='command nvim'
