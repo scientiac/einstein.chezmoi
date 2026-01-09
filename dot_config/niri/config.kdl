@@ -220,6 +220,11 @@ window-rule {
 }
 
 window-rule {
+    match title=r#"^raylib"#
+    open-floating true
+}
+
+window-rule {
     match title=r#"^Typst Preview -"#
     opacity 1.0
 }
