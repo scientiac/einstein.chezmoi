@@ -87,9 +87,6 @@ vim.lsp.config["harper_ls"] = {
     }
 }
 
--- Enable LSP servers (replaced ltex-ls-plus with harper_ls)
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'harper_ls' })
-
 vim.api.nvim_create_user_command("LspInfo", function()
   vim.cmd("silent checkhealth vim.lsp")
 end, {
@@ -210,4 +207,25 @@ vim.lsp.config.clangd = {
   },
 }
 
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'harper_ls', 'clangd' })
+vim.lsp.config.zls = {
+  cmd = { "zls" },
+  filetypes = { "zig" },
+  root_markers = { "build.zig", "zls.json", ".git" },
+  settings = {
+    zls = {
+      enable_inlay_hints = true,
+      enable_snippets = true,
+      warn_style = true,
+    },
+  },
+}
+
+vim.lsp.enable({
+  'lua_ls',
+  'nixd',
+  'nil_ls',
+  'tinymist',
+  'harper_ls',
+  'clangd',
+  'zls',
+})
