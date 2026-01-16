@@ -230,6 +230,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id="ghostty$"
+
+    open-maximized true
+}
+
+window-rule {
     match app-id="^signal$"
     block-out-from "screencast"
 }
