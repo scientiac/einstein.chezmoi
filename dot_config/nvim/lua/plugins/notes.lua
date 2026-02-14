@@ -48,12 +48,9 @@ return {
           -- Insert link at cursor
           map("n", "<leader>zk", "<Cmd>ZkInsertLink<CR>", { desc = "Add Link" })
           
-          -- Search for notes (excluding journals)
-          map("n", "<leader>zs", "<Cmd>ZkNotes { sort = { 'modified' }, excludeHrefs = { 'journal' } }<CR>", { desc = "Search notes" })
+          -- Search for notes
+          map("n", "<leader>zs", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", { desc = "Search notes" })
           
-          -- Search for journals only
-          map("n", "<leader>zj", "<Cmd>ZkNotes { hrefs = { 'journal' }, sort = { 'modified' } }<CR>", { desc = "Search journals" })
-
           -- Create note from visual selection (title)
           map("v", "<leader>znt", ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", { desc = "New note from title selection" })
           
