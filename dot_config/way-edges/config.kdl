@@ -86,7 +86,7 @@ wrap-box {
       mouse-left "swaync-client -t -sw"
     }
     preset "custom" {
-      cmd "echo $(cat /sys/class/power_supply/BAT0/capacity)/$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold)%"
+      cmd "status=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null); cap=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null); thr=$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold 2>/dev/null); [ \"$status\" = \"Charging\" ] && sym='󱐋' || sym='%'; echo \"${cap}/${thr}${sym}\""
       update-interval 1000
     }
   }
