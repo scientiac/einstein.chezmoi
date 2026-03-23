@@ -231,7 +231,11 @@ window-rule {
 
 window-rule {
     match app-id="ghostty$"
+    open-maximized true
+}
 
+window-rule {
+    match app-id="emacs$"
     open-maximized true
 }
 
