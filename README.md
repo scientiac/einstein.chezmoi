@@ -9,7 +9,7 @@ My dotfiles for Arch Linux managed by [chezmoi](https://www.chezmoi.io/).
 ### Main
 ```
 
-  zsh eza less mpv ghostty kitty neovim git chezmoi webtorrent-cli tuned morewaita-icon-theme-git udisks2-btrfs wl-clipboard bluez bluez-utils adw-gtk-theme rustup
+  zsh eza less mpv ghostty kitty neovim git chezmoi webtorrent-cli tuned morewaita-icon-theme-git wl-clipboard adw-gtk-theme
 
 ```
 
@@ -59,7 +59,7 @@ qutebrowser pdfjs python-adblock qt6-wayland
 ### fonts
 ```
 
-noto-fonts-cjk ttf-roboto ttf-nerd-fonts-symbols ttf-fantasque-nerd ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji
+noto-fonts-cjk ttf-roboto ttf-nerd-fonts-symbols ttf-fantasque-nerd ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji ttf-times-new-roman
 
 ```
 
