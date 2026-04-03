@@ -77,14 +77,13 @@ environment {
 
 // keyboard bindings
 binds {
-    Alt+Period { spawn "walker" "-m" "symbols"; }
     Mod+Return { spawn "ghostty"; }
     Alt+Shift+L { spawn "blurlock"; }
     Mod+Alt+R { spawn "recover"; }
-    Mod+Shift+V { spawn "walker" "-m" "clipboard"; }
-    Alt+Space { spawn "walker"; }
-    Mod+Alt+B { spawn "togglebar"; }
-    Alt+Shift+E { spawn "walker" "-m" "menus:session"; }
+    Mod+Shift+V repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Alt+Period repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
+    Alt+Shift+E repeat=false { spawn "vicinae" "vicinae://launch/power"; }
+    Alt+Space repeat=false { spawn "vicinae" "toggle"; }
 
     // screenshot
     Print { screenshot; }
@@ -176,8 +175,7 @@ binds {
 switch-events { lid-close { spawn "blurlock"; }; }
 
 // startup spawn
-spawn-at-startup "elephant"
-spawn-at-startup "walker" "--gapplication-service"
+spawn-at-startup "vicinae" "server"
 spawn-at-startup "way-edges"
 spawn-at-startup "swaync"
 spawn-at-startup "battery-osd"
