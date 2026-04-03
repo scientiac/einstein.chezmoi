@@ -8,12 +8,14 @@ if [ "$CURRENT_SCHEME" = "'prefer-dark'" ]; then
   # Switch to light theme
   dconf write $DCONF_COLOR_SCHEME "'default'"
   dconf write $DCONF_GTK_THEME "'adw-gtk3'"
+  vicinae theme set vicinae-light
   swc light
   echo "Switched to light theme"
 else
   # Switch to dark theme
   dconf write $DCONF_COLOR_SCHEME "'prefer-dark'"
   dconf write $DCONF_GTK_THEME "'adw-gtk3-dark'"
+  vicinae theme set vicinae-dark
   swc dark
   echo "Switched to dark theme"
 fi
