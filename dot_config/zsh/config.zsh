@@ -30,9 +30,6 @@ setopt AUTO_LIST                # Automatically list choices on ambiguous comple
 setopt AUTO_PARAM_SLASH         # If completed parameter is a directory, add a trailing slash
 setopt COMPLETE_IN_WORD         # Allow completion from within a word/phrase
 
-# Correction
-setopt CORRECT                  # Spelling correction for commands
-
 # Prompt
 setopt PROMPT_SUBST             # Enable parameter expansion, command substitution, and arithmetic expansion in prompts
 
@@ -216,8 +213,6 @@ alias h='history'
 
 # Safety aliases
 alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
 
 # Wifi QR
 alias wifiqr='nmcli device wifi show-password'
@@ -286,8 +281,14 @@ export TERM='xterm-256color'
 
 # Path additions
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+
+# For Emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# For Rust
 export PATH="$HOME/.cargo/env:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# For Go
 export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$GOPATH/bin"
-export PATH="$HOME/.config/emacs/bin:$PATH"
