@@ -1,4 +1,4 @@
-# cachy.niri.chezmoi
+# einstein.niri.chezmoi
 
 My dotfiles for Arch Linux managed by [chezmoi](https://www.chezmoi.io/).
 
