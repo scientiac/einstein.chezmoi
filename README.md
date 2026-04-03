@@ -37,7 +37,7 @@ zoxide fzf fd bat ripgrep tree dust git-delta lazygit zsh-completions zsh-histor
 ### applications
 ```
 
-newsflash readest signal-desktop steam inkscape krita blender
+newsflash readest signal-desktop
 
 ```
 
@@ -60,14 +60,6 @@ qutebrowser pdfjs python-adblock qt6-wayland
 ```
 
 noto-fonts-cjk ttf-roboto ttf-nerd-fonts-symbols ttf-fantasque-nerd ttf-nerd-fonts-symbols-common noto-fonts noto-fonts-emoji
-
-```
-
-### Local Bin Path
-```zsh
-
-mkdir -p ~/.config/environment.d
-echo 'PATH=${HOME}/.local/bin:${PATH}' > ~/.config/environment.d/01-local-bin.conf
 
 ```
 
