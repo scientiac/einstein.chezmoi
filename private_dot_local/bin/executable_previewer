@@ -1,64 +1,127 @@
 #!/usr/bin/env bash
 
-url="$1"
-# Capture the ID of the terminal that launched the script
-launcher_win_id=$(niri msg --json focused-window | jq -r '.id')
+# --- Safety & Environment ---
+set -euo pipefail
 
-# 1. Create a unique temporary profile for this instance
-# This allows multiple independent processes to run simultaneously
-profile_dir=$(mktemp -d -t firefox-typst-XXXXXX)
+# Configuration
+URL="${1:-about:blank}"
+PROFILE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/ff-minimal.XXXXXX")
+LAUNCHER_WIN_ID=$(niri msg --json focused-window | jq -r '.id')
 
-# 2. Launch Firefox and capture its PID
-# We use --no-remote and a unique profile path to keep it independent
-# niri msg action do-screen-transition -d 1500
-firefox -new-window "$url" \
-  --profile "$profile_dir" \
-  --no-remote \
-  --setpref browser.sidebar.position="none" &
-firefox_pid=$!
-
-# 3. Cleanup: Kill Firefox and remove profile when the script is killed/exits
+# --- Cleanup ---
 cleanup() {
-  echo "Cleaning up..."
-  kill "$firefox_pid" 2>/dev/null
-  rm -rf "$profile_dir"
-  exit
+    local exit_code=$?
+    echo "Cleaning up profile and processes..."
+    [[ -n "${FIREFOX_PID:-}" ]] && kill "$FIREFOX_PID" 2>/dev/null
+    rm -rf "$PROFILE_DIR"
+    exit "$exit_code"
 }
 trap cleanup SIGINT SIGTERM EXIT
 
-# 4. Immediate Focus Correction
-# Focus back to the terminal immediately after launching
-if [[ -n "$launcher_win_id" ]]; then
-  niri msg action focus-window --id "$launcher_win_id"
-  niri msg action set-window-width 50% --id "$launcher_win_id"
+# --- Profile Generation ---
+create_minimal_profile() {
+    mkdir -p "$PROFILE_DIR/chrome"
+
+    # Deep-dive user.js for total silence
+    cat <<EOF > "$PROFILE_DIR/user.js"
+/* 1. Disable Skeletons & UI Junk */
+user_pref("toolkit.cosmeticAnimations.enabled", false);
+user_pref("layout.css.skeletons.enabled", false);
+user_pref("browser.aboutHome.skeleton", false);
+user_pref("browser.newtabpage.activity-stream.skeleton", false);
+
+/* 2. Disable First Run / Welcome / Privacy Policy Popups */
+user_pref("browser.aboutWelcome.enabled", false);
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+user_pref("browser.shell.checkDefaultBrowser", false);
+user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+user_pref("browser.contentblocking.introCount", 20);
+user_pref("browser.download.panel.shown", true);
+user_pref("browser.engagement.startup_button.has_been_opened", true);
+user_pref("browser.messaging-system.whatsNewPanel.enabled", false);
+
+/* 3. Disable Telemetry & Data Collection */
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+
+/* 4. UI Cleanliness & Bookmarks */
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+user_pref("browser.bookmarks.addedImportButton", false);
+user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+
+/* 5. Performance/Behavior */
+user_pref("browser.tabs.drawInTitlebar", true);
+user_pref("browser.sidebar.position", "none");
+EOF
+
+    # userChrome.css: Remove the actual visual elements of the UI
+    cat <<EOF > "$PROFILE_DIR/chrome/userChrome.css"
+/* Collapses everything except the web content */
+#TabsToolbar, 
+#nav-bar, 
+#urlbar-container,
+#PersonalToolbar,
+#titlebar {
+    visibility: collapse !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+}
+EOF
+
+    # userContent.css: Stop web-side skeletons and animations
+    cat <<EOF > "$PROFILE_DIR/chrome/userContent.css"
+@-moz-document regexp(".*") {
+    * { animation: none !important; transition: none !important; }
+    .skeleton, [class*="skeleton"], [data-testid*="skeleton"],
+    [class*="placeholder"], .loading-placeholder {
+        display: none !important;
+    }
+}
+EOF
+}
+
+# --- Execution ---
+create_minimal_profile
+
+# Launch with --no-remote to ensure it doesn't try to merge with your main FF
+firefox --new-window "$URL" --profile "$PROFILE_DIR" --no-remote &
+FIREFOX_PID=$!
+
+# Layout: Fix terminal width immediately
+if [[ -n "$LAUNCHER_WIN_ID" ]]; then
+    niri msg action set-window-width 50% --id "$LAUNCHER_WIN_ID"
 fi
 
-# 5. Wait for the Firefox window to appear
-win_id=""
-for i in {1..50}; do
-  sleep 0.2
-  # Note: We filter by title, but check for the newest one if possible
-  win_id=$(niri msg --json windows | jq -r '
-    .[] 
-    | select(.title == "Typst Preview — Mozilla Firefox") 
-    | .id
-  ')
-
-  if [[ -n "$win_id" && "$win_id" != "null" ]]; then
-    break
-  fi
+# Wait for window and position it
+for ((i=0; i<30; i++)); do
+    sleep 0.2
+    # Find the window. We filter for "Firefox" and take the most recent (last) one.
+    WIN_ID=$(niri msg --json windows | jq -r '
+      .[] 
+      | select(.title == "Typst Preview — Mozilla Firefox") 
+      | .id
+    ')
+    
+    if [[ -n "$WIN_ID" && "$WIN_ID" != "null" ]]; then
+        niri msg action set-window-width 50% --id "$WIN_ID"
+        niri msg action focus-window --id "$LAUNCHER_WIN_ID"
+        break
+    fi
 done
 
-# 6. Perform Niri actions on the new window
-if [[ -n "$win_id" && "$win_id" != "null" ]]; then
-  niri msg action set-window-width 50% --id "$win_id"
-  niri msg action toggle-windowed-fullscreen --id "$win_id"
-  
-  # Ensure the launcher terminal regains focus after the resizing is done
-  niri msg action focus-window --id "$launcher_win_id"
-else
-  echo "Failed to find Typst Preview window"
-  exit 1
-fi
-
-wait "$firefox_pid"
+wait "$FIREFOX_PID"
