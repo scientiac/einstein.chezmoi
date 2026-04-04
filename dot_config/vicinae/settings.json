@@ -18,10 +18,19 @@
    },
    "theme": {
       "dark": {
-         "name": "vicinae-dark"
+         "name": "vicinae-dark",
+         "icon_theme": "MoreWaita"
       }
    },
+   "favorites": [],
    "providers": {
+      "core": {
+         "entrypoints": {
+            "sponsor": {
+               "enabled": false
+            }
+         }
+      },
       "power": {
          "entrypoints": {
             "hibernate": {
@@ -30,6 +39,12 @@
             "lock": {
                "preferences": {
                   "customProgram": "blurlock"
+               }
+            },
+            "logout": {
+               "preferences": {
+                  "confirm": true,
+                  "customProgram": "niri msg action quit --skip-confirmation"
                }
             },
             "sleep": {
