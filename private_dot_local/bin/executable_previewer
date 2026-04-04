@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# --- Safety & Environment ---
 set -euo pipefail
 
 # Configuration
@@ -8,7 +7,6 @@ URL="${1:-about:blank}"
 PROFILE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/ff-minimal.XXXXXX")
 LAUNCHER_WIN_ID=$(niri msg --json focused-window | jq -r '.id')
 
-# --- Cleanup ---
 cleanup() {
     local exit_code=$?
     echo "Cleaning up profile and processes..."
@@ -18,11 +16,11 @@ cleanup() {
 }
 trap cleanup SIGINT SIGTERM EXIT
 
-# --- Profile Generation ---
+# Profile Generation
 create_minimal_profile() {
     mkdir -p "$PROFILE_DIR/chrome"
 
-    # Deep-dive user.js for total silence
+    # user.js for no distraction previewer
     cat <<EOF > "$PROFILE_DIR/user.js"
 /* 1. Disable Skeletons & UI Junk */
 user_pref("toolkit.cosmeticAnimations.enabled", false);
@@ -70,7 +68,6 @@ EOF
 
     # userChrome.css: Remove the actual visual elements of the UI
     cat <<EOF > "$PROFILE_DIR/chrome/userChrome.css"
-/* Collapses everything except the web content */
 #TabsToolbar, 
 #nav-bar, 
 #urlbar-container,
@@ -82,20 +79,9 @@ EOF
     height: 0 !important;
 }
 EOF
-
-    # userContent.css: Stop web-side skeletons and animations
-    cat <<EOF > "$PROFILE_DIR/chrome/userContent.css"
-@-moz-document regexp(".*") {
-    * { animation: none !important; transition: none !important; }
-    .skeleton, [class*="skeleton"], [data-testid*="skeleton"],
-    [class*="placeholder"], .loading-placeholder {
-        display: none !important;
-    }
-}
-EOF
 }
 
-# --- Execution ---
+# Execution
 create_minimal_profile
 
 # Launch with --no-remote to ensure it doesn't try to merge with your main FF
