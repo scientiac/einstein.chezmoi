@@ -218,13 +218,14 @@ window-rule {
 }
 
 window-rule {
-    match title=r#"^raylib"#
-    open-floating true
+    match title="Typst Preview — Mozilla Firefox"
+    open-focused false
+    opacity 1.0
 }
 
 window-rule {
-    match title=r#"^Typst Preview -"#
-    opacity 1.0
+    match title=r#"^raylib"#
+    open-floating true
 }
 
 window-rule {

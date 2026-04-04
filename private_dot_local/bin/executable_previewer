@@ -10,10 +10,10 @@ profile_dir=$(mktemp -d -t firefox-typst-XXXXXX)
 
 # 2. Launch Firefox and capture its PID
 # We use --no-remote and a unique profile path to keep it independent
-niri msg action do-screen-transition -d 1500
+# niri msg action do-screen-transition -d 1500
 firefox -new-window "$url" \
   --profile "$profile_dir" \
-  --kiosk --no-remote \
+  --no-remote \
   --setpref browser.sidebar.position="none" &
 firefox_pid=$!
 
@@ -51,8 +51,8 @@ done
 
 # 6. Perform Niri actions on the new window
 if [[ -n "$win_id" && "$win_id" != "null" ]]; then
-  niri msg action toggle-windowed-fullscreen --id "$win_id"
   niri msg action set-window-width 50% --id "$win_id"
+  niri msg action toggle-windowed-fullscreen --id "$win_id"
   
   # Ensure the launcher terminal regains focus after the resizing is done
   niri msg action focus-window --id "$launcher_win_id"

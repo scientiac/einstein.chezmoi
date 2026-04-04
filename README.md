@@ -16,7 +16,7 @@ My dotfiles for Arch Linux managed by [chezmoi](https://www.chezmoi.io/).
 ### Neovim
 ```
 
-typst harper
+typst harper jq
 
 ```
 
