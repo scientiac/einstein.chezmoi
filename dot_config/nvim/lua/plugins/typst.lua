@@ -5,7 +5,7 @@ return {
   opts = {
     formatterMode = "typstyle",
     -- invert_colors = '{"rest": "auto","image": "never"}',
-    open_cmd = 'qutebrowser %s'
+    open_cmd = 'previewer %s'
   },
   config = function(_, opts)
     require('typst-preview').setup(opts)

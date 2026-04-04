@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+url="$1"
+# Capture the ID of the terminal that launched the script
+launcher_win_id=$(niri msg --json focused-window | jq -r '.id')
+
+# 1. Create a unique temporary profile for this instance
+# This allows multiple independent processes to run simultaneously
+profile_dir=$(mktemp -d -t firefox-typst-XXXXXX)
+
+# 2. Launch Firefox and capture its PID
+# We use --no-remote and a unique profile path to keep it independent
+niri msg action do-screen-transition -d 1500
+firefox -new-window "$url" \
+  --profile "$profile_dir" \
+  --kiosk --no-remote \
+  --setpref browser.sidebar.position="none" &
+firefox_pid=$!
+
+# 3. Cleanup: Kill Firefox and remove profile when the script is killed/exits
+cleanup() {
+  echo "Cleaning up..."
+  kill "$firefox_pid" 2>/dev/null
+  rm -rf "$profile_dir"
+  exit
+}
+trap cleanup SIGINT SIGTERM EXIT
+
+# 4. Immediate Focus Correction
+# Focus back to the terminal immediately after launching
+if [[ -n "$launcher_win_id" ]]; then
+  niri msg action focus-window --id "$launcher_win_id"
+  niri msg action set-window-width 50% --id "$launcher_win_id"
+fi
+
+# 5. Wait for the Firefox window to appear
+win_id=""
+for i in {1..50}; do
+  sleep 0.2
+  # Note: We filter by title, but check for the newest one if possible
+  win_id=$(niri msg --json windows | jq -r '
+    .[] 
+    | select(.title == "Typst Preview — Mozilla Firefox") 
+    | .id
+  ')
+
+  if [[ -n "$win_id" && "$win_id" != "null" ]]; then
+    break
+  fi
+done
+
+# 6. Perform Niri actions on the new window
+if [[ -n "$win_id" && "$win_id" != "null" ]]; then
+  niri msg action toggle-windowed-fullscreen --id "$win_id"
+  niri msg action set-window-width 50% --id "$win_id"
+  
+  # Ensure the launcher terminal regains focus after the resizing is done
+  niri msg action focus-window --id "$launcher_win_id"
+else
+  echo "Failed to find Typst Preview window"
+  exit 1
+fi
+
+wait "$firefox_pid"
