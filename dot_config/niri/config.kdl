@@ -218,12 +218,6 @@ window-rule {
 }
 
 window-rule {
-    match title="Typst Preview — Mozilla Firefox"
-    open-focused false
-    opacity 1.0
-}
-
-window-rule {
     match title=r#"^raylib"#
     open-floating true
 }
