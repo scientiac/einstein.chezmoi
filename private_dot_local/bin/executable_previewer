@@ -3,24 +3,29 @@
 set -euo pipefail
 
 # Configuration
-URL="${1:-about:blank}"
-PROFILE_DIR=$(mktemp -d "${TMPDIR:-/tmp}/ff-minimal.XXXXXX")
-LAUNCHER_WIN_ID=$(niri msg --json focused-window | jq -r '.id')
+URL="${1:-about:logo}"
+PROFILE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ff-previewer-profile"
 
 cleanup() {
-    local exit_code=$?
-    echo "Cleaning up profile and processes..."
-    [[ -n "${FIREFOX_PID:-}" ]] && kill "$FIREFOX_PID" 2>/dev/null
-    rm -rf "$PROFILE_DIR"
-    exit "$exit_code"
+    if [[ -n "${FIREFOX_PID:-}" ]]; then
+        kill "$FIREFOX_PID" 2>/dev/null
+        wait "$FIREFOX_PID" 2>/dev/null || true
+    fi
+    exit
 }
+
 trap cleanup SIGINT SIGTERM EXIT
 
 # Profile Generation
 create_minimal_profile() {
+    # You can 'rm -rf ~/.cache/ff-previewer' to force a rebuild
+    if [[ -f "$PROFILE_DIR/user.js" ]]; then
+        return
+    fi
+
     mkdir -p "$PROFILE_DIR/chrome"
 
-    # user.js for no distraction previewer
+    # user.js
     cat <<EOF > "$PROFILE_DIR/user.js"
 /* 1. Disable Skeletons & UI Junk */
 user_pref("toolkit.cosmeticAnimations.enabled", false);
@@ -61,12 +66,18 @@ user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
+/* FORCE NEW WINDOWS INSTEAD OF TABS */
+user_pref("browser.link.open_newwindow", 2);
+user_pref("browser.link.open_newwindow.override.external", 2);
+user_pref("browser.link.open_newwindow.restriction", 0);
+user_pref("browser.tabs.loadInBackground", true)
+
 /* 5. Performance/Behavior */
 user_pref("browser.tabs.drawInTitlebar", true);
 user_pref("browser.sidebar.position", "none");
 EOF
 
-    # userChrome.css: Remove the actual visual elements of the UI
+    # userChrome.css
     cat <<EOF > "$PROFILE_DIR/chrome/userChrome.css"
 #TabsToolbar, 
 #nav-bar, 
@@ -80,35 +91,26 @@ EOF
     height: 0 !important;
 }
 EOF
+
+    # 3. userContent.css
+    cat <<EOF > "$PROFILE_DIR/chrome/userContent.css"
+* {
+    scrollbar-width: none !important;
+}
+EOF
+
+    # 4. customKeys
+    cat <<EOF > "$PROFILE_DIR/customKeys.json"
+{"key_newNavigatorTab":{},"key_showAllTabs":{},"key_restoreLastClosedTabOrWindowOrSession":{}}
+EOF
+
 }
 
 # Execution
 create_minimal_profile
 
-# Launch with --no-remote to ensure it doesn't try to merge with your main FF
-firefox --new-window --profile "$PROFILE_DIR" --no-remote "$URL" &
+# --no-remote to ensure it doesn't try to merge with the main firefox profile
+firefox --new-window --profile "$PROFILE_DIR" --no-remote "$URL" >/dev/null 2>&1 &
 FIREFOX_PID=$!
 
-# Layout: Fix terminal width immediately
-if [[ -n "$LAUNCHER_WIN_ID" ]]; then
-    niri msg action set-window-width 50% --id "$LAUNCHER_WIN_ID"
-fi
-
-# Wait for window and position it
-for ((i=0; i<30; i++)); do
-    sleep 0.2
-    # Find the window. We filter for "Firefox" and take the most recent (last) one.
-    WIN_ID=$(niri msg --json windows | jq -r '
-      .[] 
-      | select(.title == "Typst Preview — Mozilla Firefox") 
-      | .id
-    ')
-    
-    if [[ -n "$WIN_ID" && "$WIN_ID" != "null" ]]; then
-        niri msg action set-window-width 50% --id "$WIN_ID"
-        niri msg action focus-window --id "$LAUNCHER_WIN_ID"
-        break
-    fi
-done
-
-wait "$FIREFOX_PID"
+wait "$FIREFOX_PID" || true
