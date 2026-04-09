@@ -72,6 +72,7 @@ EOF
 #nav-bar, 
 #urlbar-container,
 #PersonalToolbar,
+#navigator-toolbox,
 #titlebar {
     visibility: collapse !important;
     margin: 0 !important;
@@ -85,7 +86,7 @@ EOF
 create_minimal_profile
 
 # Launch with --no-remote to ensure it doesn't try to merge with your main FF
-firefox --new-window "$URL" --profile "$PROFILE_DIR" --no-remote &
+firefox --new-window --profile "$PROFILE_DIR" --no-remote "$URL" &
 FIREFOX_PID=$!
 
 # Layout: Fix terminal width immediately
