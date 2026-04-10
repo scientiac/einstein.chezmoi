@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-niri msg action screenshot-screen -p false --path /tmp/lock.png
+grim -l 0 /tmp/lock.png
 vips gaussblur /tmp/lock.png /tmp/locks.png 30
 niri msg action do-screen-transition
 swaylock -i /tmp/locks.png
