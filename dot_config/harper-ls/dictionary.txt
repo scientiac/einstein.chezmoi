@@ -15,6 +15,7 @@ Purwanchal
 RedoxOS
 Rijan
 Saurav
+SchemeSync
 Spandan
 Subedi
 Sudesh
