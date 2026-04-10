@@ -61,10 +61,10 @@ padding_right = 0
 # ============================================================================
 # Execute shell commands on battery state changes
 [commands]
-# on_charging = "notify-send 'Battery' 'Charging started'"
+on_charging = "brightnessctl --restore"
 # on_discharging = "brightnessctl set 50%;"
-on_critical = "brightnessctl set 5%; for i in {1..3}; do mpv --no-video /usr/share/sounds/gnome/default/alerts/hum.ogg; done"
-on_low = "brightnessctl set 10%; mpv --no-video /usr/share/sounds/gnome/default/alerts/hum.ogg"
+on_critical = "brightnessctl --save; brightnessctl set 5%; for i in {1..3}; do mpv --no-video /usr/share/sounds/gnome/default/alerts/hum.ogg; done"
+on_low = "brightnessctl --save; brightnessctl set 10%; mpv --no-video /usr/share/sounds/gnome/default/alerts/hum.ogg"
 # on_low = "notify-send 'Battery Low' 'Please charge soon'"
 on_full = "brightnessctl set 100%"
 # on_healthy = "notify-send 'Battery Healthy' 'Consider unplugging to preserve battery health'"
