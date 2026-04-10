@@ -69,14 +69,6 @@ vim.lsp.config.tinymist = {
 }
 
 vim.lsp.config.harper_ls = {
-  cmd = { "tinymist" },
-  filetypes = { "typst" },
-  settings = {
-      formatterMode = "typstyle"
-  },
-}
-
-vim.lsp.config.lua_ls = {
   cmd = { "harper-ls", "--stdio" },
   filetypes = { "typst", "tex", "markdown", "text" },
   settings = {
@@ -108,10 +100,17 @@ vim.lsp.config.lua_ls = {
   },
 }
 
-vim.lsp.config.nixd = {
-  cmd = { 'nixd' },
-  filetypes = { 'nix' },
-  root_markers = { 'flake.nix', 'git' },
+vim.lsp.config.lua_ls = {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = { ".luarc.json", ".git", vim.uv.cwd() },
+  settings = {
+    Lua = {
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
 }
 
 vim.lsp.config.nil_ls = {
@@ -120,4 +119,4 @@ vim.lsp.config.nil_ls = {
   root_markers = { 'flake.nix', '.git' },
 }
 
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls' })
+vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'harper_ls' })
