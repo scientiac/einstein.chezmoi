@@ -7,7 +7,12 @@ local ok, blink = pcall(require, "blink.cmp")
 if not ok then return end
 
 blink.setup({
-  keymap = { preset = "enter" },
+
+  keymap = {
+    preset = 'enter',
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+  },
   sources = {
     default = { "lazydev", "lsp", "path", "snippets", "buffer" },
     providers = {
