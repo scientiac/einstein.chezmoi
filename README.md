@@ -66,7 +66,7 @@ noto-fonts-cjk ttf-roboto ttf-nerd-fonts-symbols ttf-fantasque-nerd ttf-nerd-fon
 ## Niri
 ```
 
-swayosd brightnessctl
+swayosd brightnessctl swaylock libvips openslide
 
 ```
 
