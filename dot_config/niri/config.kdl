@@ -1,9 +1,8 @@
 // display
 output "eDP-1" {
-    scale 1.660000
+    scale 1.67
     transform "normal"
-    // mode "2880x1800@60.001000"
-    mode "2880x1800@120.001000"
+    mode "2880x1800@120"
 }
 
 // input
@@ -182,18 +181,12 @@ spawn-at-startup "battery-osd"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "awww-start"
-spawn-at-startup "clipse" "-listen"
 spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
 spawn-at-startup "swayidle" "-w"
 
 // overview wallpaper
 layer-rule {
     match namespace="wp-back"
-    place-within-backdrop true
-}
-
-layer-rule {
-    match namespace="waybar"
     place-within-backdrop true
 }
 
@@ -209,27 +202,12 @@ window-rule {
 }
 
 window-rule {
-    match title="^clipse$"
-    open-floating true
-}
-
-window-rule {
     match title="Firefox - Choose a profile"
     open-floating true
 }
 
 window-rule {
-    match title=r#"^raylib"#
-    open-floating true
-}
-
-window-rule {
     match app-id="ghostty$"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="emacs$"
     open-maximized true
 }
 
