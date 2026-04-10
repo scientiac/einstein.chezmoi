@@ -184,6 +184,7 @@ spawn-at-startup "swayosd-server"
 spawn-at-startup "awww-start"
 spawn-at-startup "clipse" "-listen"
 spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
+spawn-at-startup "swayidle" "-w"
 
 // overview wallpaper
 layer-rule {
