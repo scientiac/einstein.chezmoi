@@ -24,6 +24,16 @@
    },
    "favorites": [],
    "providers": {
+      "@Gelei/store.vicinae.bluetooth": {
+         "preferences": {
+            "connectionToggleable": true
+         }
+      },
+      "@dagimg-dot/store.vicinae.wifi-commander": {
+         "preferences": {
+            "network-cli-tool": "iwctl"
+         }
+      },
       "core": {
          "entrypoints": {
             "sponsor": {
