@@ -10,7 +10,6 @@ require("plugins.blink")
 require("plugins.snacks")
 require("plugins.misc")
 require("plugins.typst")
-require("plugins.zk")
 
 require("opts").final()
 require("mappings").general()

@@ -160,6 +160,16 @@ mini_config.starter = {
       section = "start ",
     },
     {
+      name = "new note",
+      action = "SmaNew",
+      section = "smarana ",
+    },
+    {
+      name = "search notes",
+      action = "SmaNotes",
+      section = "smarana ",
+    },
+    {
       name = "quit",
       action = "qa",
       section = "exit ",

@@ -17,13 +17,6 @@ M.general = function()
   map("i", "<C-k>", "<Up>")
   map("i", "<C-l>", "<Right>")
 
-  -- Copy and paste in the same cursor position
-  map("n", "p", function()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    vim.cmd('put')
-    vim.api.nvim_win_set_cursor(0, { row + 1, col })
-  end)
-
   map("i", "jk", "<esc>")
   map("i", "<C-c>", "<esc>")
 
