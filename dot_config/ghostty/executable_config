@@ -1,5 +1,5 @@
 title = "Ghostty"
-theme = light:Gruvbox Light,dark:GruvboxDarkIac
+theme = light:kanagawa-wave,dark:kanagawa-dragon
 font-size = 12
 font-family = "FantasqueSansM Nerd Font Mono"
 mouse-hide-while-typing = true

@@ -1,2 +1,3 @@
 dot_config/nvim/lazy-lock.json
 /private_dot_local/bin/executable_battery-osd
+/dot_config/nvim/nvim-pack-lock.json
