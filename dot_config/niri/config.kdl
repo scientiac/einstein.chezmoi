@@ -207,6 +207,12 @@ window-rule {
 }
 
 window-rule {
+    match title="Typst Preview — Mozilla Firefox"
+    opacity 1.0
+    open-focused false
+}
+
+window-rule {
     match app-id="ghostty$"
     open-maximized true
 }
