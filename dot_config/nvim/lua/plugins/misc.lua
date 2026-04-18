@@ -23,6 +23,10 @@ if ok2 then
     preview = {
       icon_provider = "mini",
     },
+    ---@diagnostic disable-next-line: missing-fields
+    typst = {
+      enable = false,
+    },
   })
 end
 
