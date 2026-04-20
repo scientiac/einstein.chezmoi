@@ -3,6 +3,7 @@ output "eDP-1" {
     scale 1.67
     transform "normal"
     mode "2880x1800@120"
+    variable-refresh-rate
 }
 
 // input
@@ -78,7 +79,6 @@ environment {
 binds {
     Mod+Return { spawn "ghostty"; }
     Alt+Shift+L { spawn "blurlock"; }
-    Mod+Alt+R { spawn "recover"; }
     Mod+Shift+V repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     Alt+Period repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
     Alt+Shift+E repeat=false { spawn "vicinae" "vicinae://launch/power"; }
@@ -111,10 +111,11 @@ binds {
 
     Mod+C { center-column; }
     Mod+Backspace { close-window; }
+    Mod+Q { close-window; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+Comma { consume-or-expel-window-left; }
     Mod+Period { consume-or-expel-window-right; }
-    Mod+Ctrl+Escape { toggle-window-floating; }
+    Mod+Alt+F { toggle-window-floating; }
     Mod+Down { focus-window-or-workspace-down; }
 
     Mod+F { maximize-column; }
@@ -198,7 +199,10 @@ window-rule {
 
 window-rule {
     match is-focused=false
-    opacity 0.950000
+    opacity 0.90000
+    // background-effect {
+    //     blur true
+    // }
 }
 
 window-rule {
@@ -220,6 +224,28 @@ window-rule {
 window-rule {
     match app-id="^signal$"
     block-out-from "screencast"
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
 }
 
 animations { slowdown 1.000000; }
