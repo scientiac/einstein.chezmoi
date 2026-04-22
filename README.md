@@ -99,3 +99,8 @@ sudo systemctl enable --now nix-daemon
 ```
 walker elephant-archlinuxpkgs-bin elephant-bluetooth-bin elephant-calc-bin elephant-clipboard-bin elephant-desktopapplications-bin elephant-files-bin elephant-menus-bin elephant-providerlist-bin elephant-runner-bin elephant-symbols-bin elephant-unicode-bin elephant-websearch-bin
 ```
+
+## Revoval
+```
+sudo pacman -Rns gnu-free-fonts
+```

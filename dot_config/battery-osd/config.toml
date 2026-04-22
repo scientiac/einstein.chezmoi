@@ -12,7 +12,7 @@ poll_interval_secs = 5
 # ============================================================================
 critical_threshold = 10.0   # Show critical warning at this percentage
 low_threshold = 20.0        # Show low battery warning at this percentage
-healthy_threshold = 80.0    # Remind to unplug when charging reaches this percentage
+healthy_threshold = 90.0    # Remind to unplug when charging reaches this percentage
 
 # ============================================================================
 # DISABLE SPECIFIC NOTIFICATIONS
