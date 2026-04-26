@@ -191,18 +191,30 @@ layer-rule {
     place-within-backdrop true
 }
 
+// layer-rule {
+//     match namespace="way-edges-widget"
+//     // opacity 0.5
+//     background-effect {
+//         blur true
+//     }
+// }
+
 window-rule {
     draw-border-with-background true
-    geometry-corner-radius 8.000000 8.000000 8.000000 8.000000
+    geometry-corner-radius 4.000000 4.000000 4.000000 4.000000
     clip-to-geometry true
+    opacity 0.9
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {
     match is-focused=false
-    opacity 0.90000
-    // background-effect {
-    //     blur true
-    // }
+    opacity 0.7
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {
@@ -214,6 +226,17 @@ window-rule {
     match title="Typst Preview — Mozilla Firefox"
     opacity 1.0
     open-focused false
+}
+
+window-rule {
+    match app-id="firefox$"
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="helium$"
+    // prefer-no-csd false
+    opacity 1.0
 }
 
 window-rule {
