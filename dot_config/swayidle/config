@@ -2,7 +2,7 @@
 timeout 285 'brightnessctl --save && brightnessctl set 20%' resume 'brightnessctl --restore'
 
 # Lock + DPMS off at 2 minutes
-timeout 300 'niri msg action spawn -- ~/.local/bin/blurlock'
+timeout 300 'niri msg action spawn -- quickshell -c lockscreen'
 timeout 400 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors && brightnessctl --restore'
 
 # Ensure monitors go off cleanly before suspend

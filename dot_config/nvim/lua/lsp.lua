@@ -119,4 +119,10 @@ vim.lsp.config.nil_ls = {
   root_markers = { 'flake.nix', '.git' },
 }
 
-vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'harper_ls' })
+vim.lsp.config.qmlls = {
+  cmd = { 'qmlls6' },
+  filetypes = { 'qml', 'qmljs' },
+  root_markers = { '.git' },
+}
+
+vim.lsp.enable({ 'lua_ls', 'nixd', 'nil_ls', 'tinymist', 'harper_ls', 'qmlls' })
