@@ -71,6 +71,7 @@ environment {
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
     QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
     MOZ_ENABLE_WAYLAND "1"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 }
@@ -78,7 +79,7 @@ environment {
 // keyboard bindings
 binds {
     Mod+Return { spawn "ghostty"; }
-    Alt+Shift+L { spawn "blurlock"; }
+    Alt+Shift+L { spawn "quickshell" "-c" "lockscreen"; }
     Mod+Shift+V repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     Alt+Period repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
     Alt+Shift+E repeat=false { spawn "vicinae" "vicinae://launch/power"; }
@@ -157,30 +158,28 @@ binds {
     Mod+Tab { focus-window-down-or-column-right; }
     Mod+Up { focus-window-or-workspace-up; }
 
-    XF86AudioLowerVolume { spawn "sh" "-c" "swayosd-client --output-volume -5 --max-volume 100"; }
-    XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --output-volume +5 --max-volume 100"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
 
-    XF86AudioMicMute { spawn "sh" "-c" "swayosd-client --input-volume mute-toggle"; }
-    XF86AudioMute { spawn "sh" "-c" "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-    XF86MonBrightnessUp { spawn "sh" "-c" "swayosd-client --brightness +5"; }
-    XF86MonBrightnessDown { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
 
-    Mod+XF86AudioRaiseVolume { spawn "sh" "-c" "swayosd-client --brightness +5"; }
-    Mod+XF86AudioLowerVolume { spawn "sh" "-c" "[ $(brightnessctl get) -gt 20 ] && swayosd-client --brightness -5"; }
+    Mod+XF86AudioRaiseVolume { spawn "brightnessctl" "set" "+5%"; }
+    Mod+XF86AudioLowerVolume { spawn "brightnessctl" "set" "5%-"; }
 
     XF86Calculator { spawn "sh" "-c" "if pidof gnome-calculator > /dev/null; then kill -9 $(pidof gnome-calculator); else gnome-calculator; fi"; }
 }
 
-switch-events { lid-close { spawn "blurlock"; }; }
+switch-events { lid-close { spawn "quickshell" "-c" "lockscreen"; }; }
 
 // startup spawn
 spawn-at-startup "vicinae" "server"
-spawn-at-startup "way-edges"
-spawn-at-startup "swaync"
-spawn-at-startup "battery-osd"
+spawn-at-startup "quickshell" "-c" "osd"
+spawn-at-startup "quickshell"
 spawn-at-startup "nm-applet"
-spawn-at-startup "swayosd-server"
 spawn-at-startup "awww-start"
 spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
 spawn-at-startup "swayidle" "-w"

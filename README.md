@@ -66,7 +66,7 @@ noto-fonts-cjk ttf-roboto ttf-nerd-fonts-symbols ttf-fantasque-nerd ttf-nerd-fon
 ## Niri
 ```
 
-swayosd brightnessctl swaylock libvips openslide grim
+swayosd brightnessctl swaylock libvips openslide grim qt6ct adwaita-qt6-git quickshell
 
 ```
 
@@ -103,4 +103,10 @@ walker elephant-archlinuxpkgs-bin elephant-bluetooth-bin elephant-calc-bin eleph
 ## Revoval
 ```
 sudo pacman -Rns gnu-free-fonts
+```
+
+## Power Threshold
+```
+sudo visudo -f /etc/sudoers.d/battery-threshold
+scientiac ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/power_supply/BAT0/charge_control_end_threshold
 ```

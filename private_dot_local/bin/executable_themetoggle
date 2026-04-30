@@ -10,6 +10,7 @@ if [ "$CURRENT_SCHEME" = "'prefer-dark'" ]; then
   dconf write $DCONF_GTK_THEME "'adw-gtk3'"
   vicinae theme set vicinae-light
   swc light
+  sed -i 's/^style=.*/style=Adwaita/' ~/.config/qt6ct/qt6ct.conf
   echo "Switched to light theme"
 else
   # Switch to dark theme
@@ -17,5 +18,6 @@ else
   dconf write $DCONF_GTK_THEME "'adw-gtk3-dark'"
   vicinae theme set vicinae-dark
   swc dark
+  sed -i 's/^style=.*/style=Adwaita-Dark/' ~/.config/qt6ct/qt6ct.conf
   echo "Switched to dark theme"
 fi
