@@ -292,3 +292,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # For Go
 export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# QT
+export QT_QPA_PLATFORMTHEME="gtk3"
