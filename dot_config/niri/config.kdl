@@ -71,9 +71,12 @@ environment {
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
     QT_QPA_PLATFORM "wayland"
-    QT_QPA_PLATFORMTHEME "qt6ct"
+    // install qt6-base
+    QT_QPA_PLATFORMTHEME "gtk3"
+    // install 	qadwaitadecorations-qt6
+    QT_WAYLAND_DECORATION "adwaita"
     MOZ_ENABLE_WAYLAND "1"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 }
 
 // keyboard bindings
@@ -176,18 +179,22 @@ binds {
 switch-events { lid-close { spawn "quickshell" "-c" "lockscreen"; }; }
 
 // startup spawn
+spawn-at-startup "awww-start"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "quickshell" "-c" "osd"
-spawn-at-startup "quickshell"
-spawn-at-startup "nm-applet"
-spawn-at-startup "awww-start"
+spawn-at-startup "quickshell" "-c" "topbar"
 spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
+spawn-at-startup "nm-applet"
 spawn-at-startup "swayidle" "-w"
 
 // overview wallpaper
 layer-rule {
     match namespace="wp-back"
     place-within-backdrop true
+
+//     background-effect {
+//         blur true
+//     }
 }
 
 // layer-rule {

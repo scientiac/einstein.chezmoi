@@ -43,12 +43,6 @@ Item {
 	property var _battery: UPower.displayDevice
 	property real _prevPercentage: -1
 
-	// Track which thresholds have already fired to avoid repeats
-	property bool _firedLow: false
-	property bool _firedCritical: false
-	property bool _firedHealthy: false
-	property bool _firedFull: false
-
 	onPercentageChanged: {
 		if (_prevPercentage < 0) {
 			// First reading, just record
@@ -56,53 +50,40 @@ Item {
 			return;
 		}
 
-		// Low threshold (crossing down through 20)
-		if (percentage <= 20 && !_firedLow) {
-			_firedLow = true;
+		// Low threshold (crossing down to 20%)
+		if (percentage <= 20 && _prevPercentage > 20) {
 			root.batteryLow();
-		} else if (percentage > 20) {
-			_firedLow = false;
 		}
 
-		// Critical threshold (crossing down through 10)
-		if (percentage <= 10 && !_firedCritical) {
-			_firedCritical = true;
+		// Critical threshold (crossing down to 10%)
+		if (percentage <= 10 && _prevPercentage > 10) {
 			root.batteryCritical();
-		} else if (percentage > 10) {
-			_firedCritical = false;
 		}
 
-		// Healthy threshold (only if limit is 100)
-		if (chargeLimit !== 80 && percentage >= 80 && percentage < 100 && !_firedHealthy) {
-			_firedHealthy = true;
+		// Healthy threshold (crossing up to 80%)
+		if (chargeLimit !== 80 && percentage >= 80 && _prevPercentage < 80) {
 			root.batteryHealthy();
-		} else if (percentage < 80) {
-			_firedHealthy = false;
 		}
 
-		// Full threshold (from UPower state or charge limit)
+		// Full threshold (from percentage crossing)
 		const targetFull = chargeLimit > 0 ? chargeLimit : 100;
-		const isStateFull = _battery && _battery.state === UPowerDeviceState.FullyCharged;
-		
-		if ((percentage >= targetFull || isStateFull) && !_firedFull) {
-			_firedFull = true;
+		if (percentage >= targetFull && _prevPercentage < targetFull) {
 			root.batteryFull();
-		} else if (percentage < targetFull && !isStateFull) {
-			_firedFull = false;
 		}
 
 		_prevPercentage = percentage;
 	}
 
 	// Watch for UPower state changes (e.g., hitting FullyCharged while plugged in)
+	property bool _stateFiredFull: false
 	Connections {
 		target: _battery
 		function onStateChanged() {
-			if (_battery.state === UPowerDeviceState.FullyCharged && !_firedFull) {
-				_firedFull = true;
+			if (_battery.state === UPowerDeviceState.FullyCharged && !_stateFiredFull) {
+				_stateFiredFull = true;
 				root.batteryFull();
 			} else if (_battery.state !== UPowerDeviceState.FullyCharged && percentage < (chargeLimit > 0 ? chargeLimit : 100)) {
-				_firedFull = false;
+				_stateFiredFull = false;
 			}
 		}
 	}

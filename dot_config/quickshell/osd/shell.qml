@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 
-Scope {
+ShellRoot {
 	id: root
 
 	// === Central state ===
@@ -90,13 +90,13 @@ Scope {
 	Connections {
 		target: batteryOsd
 		function onBatteryLow() {
-			if (!root.isInitialized) return;
+			if (!root.isInitialized || batteryOsd.isCharging) return;
 			root.showView("battery");
 			root._brightnessDimmed = true;
 			root._runCmd("brightnessctl --save; brightnessctl set 10%");
 		}
 		function onBatteryCritical() {
-			if (!root.isInitialized) return;
+			if (!root.isInitialized || batteryOsd.isCharging) return;
 			root.showView("battery");
 			root._brightnessDimmed = true;
 			root._runCmd("brightnessctl --save; brightnessctl set 5%");
