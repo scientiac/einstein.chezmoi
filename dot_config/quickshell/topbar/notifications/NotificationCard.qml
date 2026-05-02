@@ -193,8 +193,9 @@ Item {
 			// Left side: Image/Icon
 			Item {
 				id: iconContainer
-				Layout.preferredWidth: 32
-				Layout.preferredHeight: 32
+				visible: root.hasContentImage || root.hasAppIcon
+				Layout.preferredWidth: visible ? 32 : 0
+				Layout.preferredHeight: visible ? 32 : 0
 				Layout.alignment: Qt.AlignTop
 
 				// Main Image (if available) or Large App Icon
