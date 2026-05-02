@@ -179,10 +179,12 @@ binds {
 switch-events { lid-close { spawn "quickshell" "-c" "lockscreen"; }; }
 
 // startup spawn
-spawn-at-startup "awww-start"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "quickshell" "-c" "osd"
 spawn-at-startup "quickshell" "-c" "topbar"
+spawn-at-startup "awww-daemon" "-n" "wp-front"
+spawn-at-startup "awww-daemon" "-n" "wp-back"
+spawn-at-startup "awww-start"
 spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "-w"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swayidle" "-w"
