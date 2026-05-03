@@ -1,0 +1,1 @@
+root=PARTUUID=05e2f2cf-645e-4fa6-8ac2-33403e814a90 zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs loglevel=0 quiet splash usbcore.quirks=5566:0008:gki drm.edid_firmware=eDP-1:edid/edp-hdr.bin systemd.show_status=false rd.systemd.show_status=false rd.udev.log_level=0 vt.global_cursor_default=0 fbcon=map:1
