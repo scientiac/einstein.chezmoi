@@ -22,6 +22,17 @@ vim.api.nvim_create_autocmd("FileType", {
 local map = require("mappings").map
 map("n", "<leader>tp", "<cmd>TypstPreviewToggle<cr>", "Toggle Typst Preview")
 
+--  Pin Main
+map("n", "<leader>tm", function()
+  local clients = vim.lsp.get_clients({ name = "tinymist" })
+  if #clients == 0 then return end
+
+  clients[1]:request("workspace/executeCommand", {
+    command = "tinymist.pinMain",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+  })
+end, "Tinymist Pin Main")
+
 
 -- Smarana
 vim.pack.add({ { src = "https://codeberg.org/scientiac/smarana.git" } })
