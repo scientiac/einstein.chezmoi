@@ -159,3 +159,60 @@ then `reboot`.
 ## Options
 
 Hover around the bottom corners to see options for login.
+
+## Keyring
+
+Edit `/etc/pam.d/greetd` and make it look like this:
+
+```
+#%PAM-1.0
+
+auth       required     pam_securetty.so
+auth       requisite    pam_nologin.so
+auth       include      system-local-login
+auth       optional     pam_gnome_keyring.so
+account    include      system-local-login
+session    include      system-local-login
+session    optional     pam_gnome_keyring.so auto_start
+```
+
+## Niri Warning
+I have manually verified that adding >/dev/null 2>&1 to the following commands within the niri-session script completely silences the deprecated warnings during both session startup and exit:
+ ```diff
+ # 1. In the systemctl environment import:
+- systemctl --user import-environment
++ systemctl --user import-environment >/dev/null 2>&1
+
+ #2. In the DBus activation block:
+  if hash dbus-update-activation-environment 2>/dev/null; then
+-     dbus-update-activation-environment --all
++     dbus-update-activation-environment --all >/dev/null 2>&1
+  fi
+
+ #3. In the session cleanup/unset block:
+- systemctl --user unset-environment WAYLAND_DISPLAY DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET
++ systemctl --user unset-environment WAYLAND_DISPLAY DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET >/dev/null 2>&1
+```
+
+## Console Messages and Blinking Cursor
+Add the following parameters to disable logs:
+```
+quiet loglevel=3 systemd.show_status=false rd.udev.log_level=3
+```
+And `vt.global_cursor_default=0` to disable the blinking cursor.
+
+The **NUCLEAR SOLUTION** for this was adding `fbcon=map:1` `/etc/kernel/cmdline` and disable the frame-buffer console entirely.
+
+After the **NUCLEAR SOLUTION** is used, I just installed `kmscon` using `sudo pacman -S kmscon` then rebooted the system and now I have a debugging console on `TTY2` if my system breaks.
+
+## Fix GNOME Settings Not Launching
+Create a file at `~/.config/autostart/env.desktop`:
+
+```
+[Desktop Entry]
+Type=Application
+Name=Fix GNOME ENV
+Exec=dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=GNOME
+NoDisplay=true
+X-GNOME-Autostart-Phase=Initialization
+```
