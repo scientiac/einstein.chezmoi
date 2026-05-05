@@ -1,0 +1,17 @@
+directory: ~/Music
+library: ~/.config/beets/library.db
+import:
+    move: no
+    copy: yes
+    write: yes
+
+plugins: fetchart lyrics lastgenre scrub inline spotify
+
+lyrics:
+    auto: yes
+    sources: lrclib genius
+
+paths:
+    default: $albumartist/$album%aunique{}/$track $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$album%aunique{}/$track $title
