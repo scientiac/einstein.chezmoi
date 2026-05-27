@@ -1,14 +1,26 @@
+include: [secrets.yaml]
+
 directory: ~/Music
 library: ~/.config/beets/library.db
 import:
-    move: no
-    copy: yes
+    move: yes
+    copy: no
     write: yes
 
-plugins: fetchart lyrics lastgenre scrub inline spotify
+scrub:
+    auto: yes
+
+plugins: fetchart lyrics lastgenre scrub inline spotify embedart
+
+embedart:
+    auto: yes
+    remove_art_file: yes
 
 lyrics:
     auto: yes
+    force: yes
+    synced: yes
+    keep_synced: yes
     sources: lrclib genius
 
 paths:

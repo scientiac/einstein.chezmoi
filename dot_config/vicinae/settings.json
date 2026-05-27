@@ -26,7 +26,7 @@
       "system_info": false
    },
    "launcher_window": {
-      "opacity": 0.7,
+      "opacity": 1,
       "client_side_decorations": {
          "enabled": true
       }

@@ -242,6 +242,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="zathura$"
+    opacity 1.0
+}
+
+window-rule {
     match app-id="helium$"
     // prefer-no-csd false
     opacity 1.0

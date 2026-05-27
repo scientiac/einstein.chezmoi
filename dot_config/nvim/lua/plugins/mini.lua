@@ -150,12 +150,12 @@ mini_config.starter = {
       section = "start ",
     },
     {
-      name = "recent",
+      name = "recent files",
       action = "lua MiniExtra.pickers.oldfiles()",
       section = "start ",
     },
     {
-      name = "nvim config",
+      name = "configure nvim",
       action = "edit $MYVIMRC",
       section = "start ",
     },
@@ -170,7 +170,7 @@ mini_config.starter = {
       section = "smarana ",
     },
     {
-      name = "quit",
+      name = "quit nvim",
       action = "qa",
       section = "exit ",
     },
